@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+.myapp {
+    width: 100%;
+    height: 100%;
+    // background-image: 
+    // radial-gradient(circle at 13% 47%, rgba(229,52,53, 0.74) 0%, rgba(229,52,53, 0.74) 25%,transparent 25%, transparent 100%),
+    // radial-gradient(circle at 28% 63%, rgba(229,52,53, 0.74) 0%, rgba(229,52,53, 0.74) 16%,transparent 16%, transparent 100%),
+    // radial-gradient(circle at 81% 56%, rgba(229,52,53, 0.74) 0%, rgba(229,52,53, 0.74) 12%,transparent 12%, transparent 100%),
+    // radial-gradient(circle at 26% 48%, rgba(229,52,53, 0.74) 0%, rgba(229,52,53, 0.74) 6%,transparent 6%, transparent 100%),
+    // radial-gradient(circle at 97% 17%, rgba(229,52,53, 0.74) 0%, rgba(229,52,53, 0.74) 56%,transparent 56%, transparent 100%),
+    // radial-gradient(circle at 50% 100%, rgba(229,52,53, 0.74) 0%, rgba(229,52,53, 0.74) 36%,transparent 36%, transparent 100%),
+    // radial-gradient(circle at 55% 52%, rgba(229,52,53, 0.74) 0%, rgba(229,52,53, 0.74) 6%,transparent 6%, transparent 100%),
+    // linear-gradient(90deg, rgba(229,52,53, 0.74),rgba(229,52,53, 0.74));
+    background-attachment: fixed;
+    background-image: radial-gradient(circle at 13% 47%, rgba(229,52,53, 0.41) 0%, rgba(229,52,53, 0.41) 25%,transparent 25%, transparent 100%),radial-gradient(circle at 28% 63%, rgba(229,52,53, 0.41) 0%, rgba(229,52,53, 0.41) 16%,transparent 16%, transparent 100%),radial-gradient(circle at 81% 56%, rgba(229,52,53, 0.41) 0%, rgba(229,52,53, 0.41) 12%,transparent 12%, transparent 100%),radial-gradient(circle at 26% 48%, rgba(229,52,53, 0.41) 0%, rgba(229,52,53, 0.41) 6%,transparent 6%, transparent 100%),radial-gradient(circle at 97% 17%, rgba(229,52,53, 0.06) 0%, rgba(229,52,53, 0.06) 56%,transparent 56%, transparent 100%),radial-gradient(circle at 50% 100%, rgba(229,52,53, 0.06) 0%, rgba(229,52,53, 0.06) 36%,transparent 36%, transparent 100%),radial-gradient(circle at 55% 52%, rgba(229,52,53, 0.41) 0%, rgba(229,52,53, 0.41) 6%,transparent 6%, transparent 100%),linear-gradient(90deg, rgba(229,52,53, 0.06),rgba(229,52,53, 0.06));
+}
+
+.mybg {
+    background-color: rgba($color: #ffffff, $alpha: 0.9);
+    border-radius: 20px;
+}
+
+.mybutton {
+    background-color: rgba($color: #E53435, $alpha: 1.0) !important
+}
+
+.logoImg, .logo  {
+    height: 180px;
+}
+
+
+.logo {
+    width: 180px;
+    border-radius: 50%;
+    background-color: rgba($color: #E53435, $alpha: 0.5);
+    box-shadow: rgba($color: #E53435, $alpha: 0.5) 0px 0px 20px 20px;    
+}
