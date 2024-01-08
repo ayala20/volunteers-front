@@ -1,0 +1,32 @@
+<form class="d-flex h-100 flex-column align-items-center text-center">
+
+    <div class="col-lg-4 col-12 px-4 pb-4">
+
+        <p class="h2 col-12 mb-3 mt-5 font-weight-bold"><strong>שלום {{fullName}}</strong></p>
+
+        <div class="row" *ngIf="this.step == 1">
+            <p class="h4 col-12 mb-3">היכן תרצה להתנדב היום?</p>
+            <div *ngFor="let district of districts" class="col-md-6 col-6">
+                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2">
+                    <p class="h5">מחוז</p>
+                    <p class="h5">{{district.district_name}}</p>
+                </button>
+            </div>
+            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()">הבא</button></div>
+        </div>
+
+        <div class="row" *ngIf="this.step == 2">
+            <p class="h4 col-12 mb-3">באיזה תחום תרצה להתנדב?</p>
+            <div *ngFor="let category of categories" class="col-md-6 col-6">
+                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2">
+                    <p class="h5">{{category.category_name}}</p>
+                </button>
+            </div>
+            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()">הבא</button></div>
+        </div>
+
+        <div class="row" *ngIf="this.step == 3">
+            <p class="h4 col-12 mb-3">פניתך התקבלה ומיד תענה.</p>
+        </div>
+    </div>
+</form>

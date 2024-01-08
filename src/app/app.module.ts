@@ -17,12 +17,26 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AuthGuard } from './auth.guard';
+import { RequestComponent } from './components/request/request.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { VolunteerDetailsComponent } from './components/volunteer-details/volunteer-details.component';
+import { FeedbackHistoriesComponent } from './components/feedback-histories/feedback-histories.component';
+import { SignUpManagerComponent } from './components/sign-up-manager/sign-up-manager.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AssociationRegistrationComponent } from './components/association-registration/association-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     SignUpComponent,
+    RequestComponent,
+    MenuComponent,
+    VolunteerDetailsComponent,
+    FeedbackHistoriesComponent,
+    SignUpManagerComponent,
+    AssociationRegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +53,8 @@ import { AuthGuard } from './auth.guard';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
+    MatDialogModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

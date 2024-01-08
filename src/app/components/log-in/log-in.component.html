@@ -1,11 +1,11 @@
 <form class="d-flex h-100 flex-column align-items-center text-center" [formGroup]="signInForm" (submit)="signIn()">
 
-    <div class="col-lg-4 col-10 px-4 pb-4">
+    <div class="col-lg-4 col-12 px-4 pb-4">
 
         <div class="row">
-            <div class="d-flex h-100 justify-content-center flex-column align-items-center">
-                <div class="logo mb-5 mt-5 d-flex justify-content-center align-items-center">
-                    <img class="logoImg" src="../../../assets/logo.png">
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                    <img class="logoImg rounded-circle " src="../../../assets/logo.png">
                 </div>
             </div>
 
@@ -30,13 +30,17 @@
 
             <mat-form-field appearance="fill" class="col-12">
                 <mat-label>סיסמה</mat-label>
-                <input matInput formControlName="passwordControl">
+                <input matInput formControlName="passwordControl" [type]="hide ? 'password' : 'text'">
                 <mat-error *ngIf="signInForm.get('passwordControl')?.hasError('required')">
                     סיסמה <strong>חובה</strong>
                 </mat-error>
                 <mat-error *ngIf="signInForm.get('passwordControl')?.hasError('minLength')">
                     סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
                 </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
             </mat-form-field>
 
             <div>
@@ -45,7 +49,19 @@
 
             <p class="h5 col-12 mt-4">עוד לא נרשמת?</p>
 
-            <a mat-button class="h3 col-12" routerLink="/signUp">להרשמה לחץ כאן</a>
+            <a mat-button class="h4 col-12 pt-2" routerLink="/signUpVolunteer">
+                <p class="d-flex align-items-center">להרשמת מתנדב
+                    &nbsp;
+                    <mat-icon class="icon" fontIcon="arrow_back"></mat-icon>
+                </p>
+            </a>
+
+            <a mat-button class="h4 col-12 pt-2" routerLink="/signUpManager">
+                <p class="d-flex align-items-center">להרשמת אחראי עמותה
+                    &nbsp;
+                    <mat-icon class="icon" fontIcon="arrow_back"></mat-icon>
+                </p>
+            </a>
 
         </div>
     </div>

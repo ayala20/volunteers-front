@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-            <p class="h2 col-12 mb-3">הרשמת מתנדב</p>
+            <p class="h2 col-12 mb-3">הרשמת אחראי התנדבויות בעמותה</p>
 
             <mat-form-field appearance="fill" class="col-md-6 col-12">
                 <mat-label>שם מלא</mat-label>
@@ -31,52 +31,56 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="col-md-6 col-12">
-                <mat-label>כתובת</mat-label>
-                <input matInput type="text" formControlName="addressControl">
-                <mat-error *ngIf="signUpForm.get('addressControl')?.hasError('required')">
-                    כתובת <strong>חובה</strong>
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="col-md-6 col-12">
-                <mat-label>תאריך לידה</mat-label>
-                <input matInput type="date" formControlName="dateOfBirthControl">
-                <mat-error *ngIf="signUpForm.get('dateOfBirthControl')?.hasError('required')">
+                <mat-label>דוא"ל</mat-label>
+                <input matInput type="email" formControlName="emailControl">
+                <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('required')">
                     תאריך לידה <strong>חובה</strong>
                 </mat-error>
-                <mat-error *ngIf="isAgeBelow18()">
-                    גיל המתנדב חייב להיות <strong>מעל 18 שנים</strong>
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="col-md-6 col-12">
-                <mat-label>תעודת זהות</mat-label>
-                <input matInput type="text" formControlName="idNumberControl">
-                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('required')">
-                    מספר זהות <strong>חובה</strong>
-                </mat-error>
-                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('idNumberValidator()')">
-                    מספר זהות <strong>לא תקין</strong>
+                <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('email')">
+                    כתובת דוא"ל <strong>לא תקינה</strong>
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="col-md-6 col-12">
                 <mat-label>מה הסיסמה שלך?</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordControl">
+                <input matInput type="password" formControlName="passwordControl">
                 <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('required')">
                     סיסמה <strong>חובה</strong>
                 </mat-error>
                 <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('minLength')">
                     סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
                 </mat-error>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>בחר עמותה</mat-label>
+                <mat-select formControlName="associationControl">
+                    <mat-option value="association.id" *ngFor="let association of associations">{{ association.name }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="signUpForm.get('associationControl')?.hasError('required')">
+                    שדה <strong>חובה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>הזן את סיסמת העמותה</mat-label>
+                <input matInput type="password" formControlName="passwordAssociationControl">
+                <mat-error *ngIf="signUpForm.get('passwordAssociationControl')?.hasError('required')">
+                    שדה <strong>חובה</strong>
+                </mat-error>
             </mat-form-field>
 
             <div>
                 <button mat-raised-button class="mybutton col-12 mt-2">אישור</button>
+            </div>
+
+            <div>
+                <hr class="mybutton col-12 mt-4" />
+            </div>
+
+            <div class="col-md-12 col-12 h5">
+                <p>העמותה שלך לא קיימת?</p>
+                <button mat-raised-button class="mybutton col-12 mt-2 col-md-6" (click)="openDialog()">הוספת עמותה חדשה</button>
             </div>
 
         </div>

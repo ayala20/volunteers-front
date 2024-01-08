@@ -19,6 +19,7 @@ import { idNumberValidator } from 'src/app/validators/idNumberValidator';
 })
 export class SignUpComponent {
   signUpForm: FormGroup;
+  hide = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,7 +49,6 @@ export class SignUpComponent {
   }
 
   signUp() {
-    debugger
     if (!this.signUpForm.valid) return;
     const newVolunteer: IVolunteer = {
       full_name: this.signUpForm.value.fullNameControl,
@@ -58,8 +58,6 @@ export class SignUpComponent {
       id_number: this.signUpForm.value.idNumberControl,
       password: this.signUpForm.value.passwordControl,
     };
-    console.log(newVolunteer);
-    debugger
     this.volunteerService.createVolunteer(newVolunteer).subscribe((data) => {
       saveToLocalStorage('user', data);
       this.router.navigate(['/menu']);

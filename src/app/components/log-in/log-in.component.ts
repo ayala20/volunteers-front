@@ -21,6 +21,7 @@ export class LogInComponent {
   signUser: string;
   userNameOrIdNumber: string;
   signInForm: FormGroup;
+  hide = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,7 +51,6 @@ export class LogInComponent {
   }
 
   signIn() {
-    debugger;
     if (!this.signInForm.valid) return;
     if (this.signUser == 'v') {
       this.volunteerService
