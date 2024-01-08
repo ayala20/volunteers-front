@@ -1,0 +1,80 @@
+<form class="d-flex h-100 flex-column align-items-center text-center" [formGroup]="signUpForm" (submit)="signUp()">
+
+    <div class="col-lg-6 col-10 px-4 pb-4">
+
+        <div class="row">
+            <div class="d-flex h-100 justify-content-center flex-column align-items-center">
+                <div class="logo mb-5 mt-5 d-flex justify-content-center align-items-center">
+                    <img class="logoImg" src="../../../assets/logo.png">
+                </div>
+            </div>
+
+            <p class="h2 col-12 mb-3">הרשמת מתנדב</p>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>שם מלא</mat-label>
+                <input matInput type="text" formControlName="fullNameControl">
+                <mat-error *ngIf="signUpForm.get('fullNameControl')?.hasError('required')">
+                    שם מלא <strong>חובה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>מספר טלפון</mat-label>
+                <input matInput type="tel" formControlName="phoneControl">
+                <mat-error *ngIf="signUpForm.get('phoneControl')?.hasError('required')">
+                    טלפון <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('phoneControl')?.hasError('pattern')">
+                    טלפון <strong>לא תקין</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>כתובת</mat-label>
+                <input matInput type="text" formControlName="addressControl">
+                <mat-error *ngIf="signUpForm.get('addressControl')?.hasError('required')">
+                    כתובת <strong>חובה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>תאריך לידה</mat-label>
+                <input matInput type="date" formControlName="dateOfBirthControl">
+                <mat-error *ngIf="signUpForm.get('dateOfBirthControl')?.hasError('required')">
+                    תאריך לידה <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="isAgeBelow18()">
+                    גיל המתנדב חייב להיות <strong>מעל 18 שנים</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>תעודת זהות</mat-label>
+                <input matInput type="text" formControlName="idNumberControl">
+                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('required')">
+                    מספר זהות <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('idNumberValidator()')">
+                    מספר זהות <strong>לא תקין</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>מה הסיסמה שלך?</mat-label>
+                <input matInput type="password" formControlName="passwordControl">
+                <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('required')">
+                    סיסמה <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('minLength')">
+                    סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div>
+                <button mat-raised-button class="mybutton col-12 mt-2">אישור</button>
+            </div>
+
+        </div>
+    </div>
+</form>
