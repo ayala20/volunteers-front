@@ -43,19 +43,24 @@
 
             <mat-form-field appearance="fill" class="col-md-6 col-12">
                 <mat-label>מה הסיסמה שלך?</mat-label>
-                <input matInput type="password" formControlName="passwordControl">
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordControl">
                 <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('required')">
                     סיסמה <strong>חובה</strong>
                 </mat-error>
-                <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('minLength')">
+                <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('minlength')">
                     סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
                 </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="col-md-6 col-12">
                 <mat-label>בחר עמותה</mat-label>
                 <mat-select formControlName="associationControl">
-                    <mat-option value="association.id" *ngFor="let association of associations">{{ association.name }}</mat-option>
+                    <mat-option value="association.id" *ngFor="let association of associations">{{ association.name
+                        }}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="signUpForm.get('associationControl')?.hasError('required')">
                     שדה <strong>חובה</strong>
@@ -80,7 +85,8 @@
 
             <div class="col-md-12 col-12 h5">
                 <p>העמותה שלך לא קיימת?</p>
-                <button mat-raised-button class="mybutton col-12 mt-2 col-md-6" (click)="openDialog()">הוספת עמותה חדשה</button>
+                <button mat-raised-button type="button" class="mybutton col-12 mt-2 col-md-6" (click)="openDialog()">הוספת עמותה
+                    חדשה</button>
             </div>
 
         </div>

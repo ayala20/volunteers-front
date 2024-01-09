@@ -13,11 +13,11 @@ import { dateOfBirthValidator } from 'src/app/validators/dateOfBirthValidator';
 import { idNumberValidator } from 'src/app/validators/idNumberValidator';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  selector: 'app-sign-up-volunteer',
+  templateUrl: './sign-up-volunteer.component.html',
+  styleUrls: ['./sign-up-volunteer.component.scss'],
 })
-export class SignUpComponent {
+export class SignUpVolunteerComponent {
   signUpForm: FormGroup;
   hide = true;
 

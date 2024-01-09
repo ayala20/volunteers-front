@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { IAssociation } from 'src/app/models/association.interface';
 import { AssociationService } from 'src/app/services/association.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
+import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
+import { SignUpManagerComponent } from '../sign-up-manager/sign-up-manager.component';
 
 @Component({
   selector: 'app-association-registration',
@@ -16,14 +19,21 @@ import { saveToLocalStorage } from 'src/app/shared/storageUtils';
   styleUrls: ['./association-registration.component.scss'],
 })
 export class AssociationRegistrationComponent {
-  signUpForm: FormGroup;
+  registerationForm: FormGroup;
+  selectedFile: File;
+  selectedImage: File;
+  error1: boolean = false;
+  error2: boolean = false;
+  close: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     public associationService: AssociationService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog,
+    private dialogRef: MatDialogRef<SignUpManagerComponent>
   ) {
-    this.signUpForm = this.formBuilder.group({
+    this.registerationForm = this.formBuilder.group({
       nameControl: new FormControl('', [Validators.required]),
       addressControl: new FormControl('', [Validators.required]),
       emailControl: new FormControl('', [
@@ -35,43 +45,59 @@ export class AssociationRegistrationComponent {
         Validators.pattern('[0-9]{10}'),
       ]),
       fileControl: new FormControl('', [Validators.required]),
-      logoImageControl: new FormControl(''),
+      logoImageControl: new FormControl('', [Validators.required]),
     });
   }
 
-  csvInputChange(fileInputEvent: any) {
-    debugger
-    console.log(fileInputEvent.target.files[0]);
+  changeFile(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.error1 = this.selectedFile == undefined;
   }
 
-  changeFile() {
-    debugger
-    let name = this.signUpForm.value.fileControl
-    // console.log(fileInputEvent.target.files[0]);
+  changeImage(event: any) {
+    this.selectedImage = event.target.files[0];
+    this.error2 = this.selectedImage == undefined;
   }
 
-  changeImage() {
+  createAssociation() {
+    this.error1 = this.selectedFile == undefined;
+    this.error2 = this.selectedImage == undefined;
+    if (!this.registerationForm.valid) return;
+
+    let date = Date.now()
+
     debugger
-    let name = this.signUpForm.value.fileControl
-    // console.log(fileInputEvent.target.files[0]);
-  }
-  signUp() {
-    if (!this.signUpForm.valid) return;
+
+    const formDataFile = new FormData();
+    let name1 = date + '.' + this.selectedFile.name.split('.').pop()
+    formDataFile.append('file', this.selectedFile, name1);
+    const formDataImage = new FormData();
+    let name2 = date + '.' + this.selectedImage.name.split('.').pop()
+    formDataImage.append('image', this.selectedImage, name2);
+
     const newAssociation: IAssociation = {
-      name: this.signUpForm.value.nameControl,
-      address: this.signUpForm.value.addressControl,
-      email: this.signUpForm.value.emailControl,
-      phone: this.signUpForm.value.phoneControl,
-      file: this.signUpForm.value.fileControl,
-      logo_image: this.signUpForm.value.logoImageControl,
+      name: this.registerationForm.value.nameControl,
+      address: this.registerationForm.value.addressControl,
+      email: this.registerationForm.value.emailControl,
+      phone: this.registerationForm.value.phoneControl,
+      file: name1,
+      logo_image: name2,
     };
+
+    this.associationService.uploadFile(formDataFile).subscribe((data) => {
+      newAssociation.file = data;
+    });
+
+    this.associationService.uploadImage(formDataImage).subscribe((data) => {
+      newAssociation.logo_image = data;
+    });
+
     this.associationService
       .createAssociation(newAssociation)
       .subscribe((data) => {
-        saveToLocalStorage('user', data);
-        this.router.navigate(['/menu']);
+        this.router.navigate(['/signUpManager']);
+        this.dialogRef.close();
+        this.dialog.open(AlertDialogComponent);
       });
   }
-
-
 }

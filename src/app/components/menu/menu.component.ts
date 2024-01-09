@@ -17,7 +17,7 @@ export class MenuComponent {
 
   constructor() {
     let user = getFromLocalStorage('user');
-    if (user.dateOfBirth != null || user.dateOfBirth != undefined) {
+    if ((user.roleUser != null || user.roleUser != undefined) && user.roleUser == 1) {
       this.listMenu = [
         {
           name: 'אני רוצה להתנדב היום',
@@ -32,7 +32,7 @@ export class MenuComponent {
           rout: '/feedbackHistories',
         },
       ];
-    } else if (user.branch_id != null || user.branch_id != undefined) {
+    } else if ((user.branch_id != null || user.branch_id != undefined) && user.roleUser == 2) {
       this.listMenu = [
         {
           name: 'בקשות התנדבות לאישור',
@@ -52,6 +52,33 @@ export class MenuComponent {
         },
         {
           name: 'משובי מתנדבים',
+          rout: '/request',
+        },
+      ];
+    } else if (user.roleUser == 3) {
+      this.listMenu = [
+        {
+          name: 'עמותות חדשות לאישור',
+          rout: '/newAssociationsForApproval',
+        },
+        {
+          name: 'סטטוסים',
+          rout: '/request',
+        },
+        {
+          name: 'דוח עמותה מסוימת',
+          rout: '/request',
+        },
+        {
+          name: 'דוח מתנדב מסוים',
+          rout: '/request',
+        },
+        {
+          name: 'קריאת משובים',
+          rout: '/request',
+        },
+        {
+          name: 'הוספת סניף',
           rout: '/request',
         },
       ];

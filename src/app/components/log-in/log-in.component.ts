@@ -19,7 +19,7 @@ import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 export class LogInComponent {
   color: ThemePalette = 'primary';
   signUser: string;
-  userNameOrIdNumber: string;
+  emailOrIdNumber: string;
   signInForm: FormGroup;
   hide = true;
 
@@ -30,7 +30,7 @@ export class LogInComponent {
     private router: Router
   ) {
     this.signUser = 'v';
-    this.userNameOrIdNumber = 'מספר זהות';
+    this.emailOrIdNumber = 'מספר זהות';
     this.signInForm = this.formBuilder.group({
       idNumberControl: new FormControl('', [Validators.required]),
       passwordControl: new FormControl('', [
@@ -43,10 +43,10 @@ export class LogInComponent {
   changeUser() {
     if (this.signUser === 'v') {
       this.signUser = 'm';
-      this.userNameOrIdNumber = 'שם משתמש';
+      this.emailOrIdNumber = 'דוא"ל';
     } else {
       this.signUser = 'v';
-      this.userNameOrIdNumber = 'מספר זהות';
+      this.emailOrIdNumber = 'מספר זהות';
     }
   }
 

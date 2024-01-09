@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignUpVolunteerComponent } from './components/sign-up-volunteer/sign-up-volunteer.component';
 import { AuthGuard } from './auth.guard';
 import { RequestComponent } from './components/request/request.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -11,6 +11,7 @@ import { DistrictService } from './services/district.service';
 import { CategoryService } from './services/category.service';
 import { SignUpManagerComponent } from './components/sign-up-manager/sign-up-manager.component';
 import { AssociationService } from './services/association.service';
+import { NewAssociationsComponent } from './components/new-associations/new-associations.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent, canActivate: [AuthGuard] },
@@ -20,7 +21,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'logIn', component: LogInComponent },
-  { path: 'signUpVolunteer', component: SignUpComponent },
+  { path: 'signUpVolunteer', component: SignUpVolunteerComponent },
   {
     path: 'signUpManager',
     component: SignUpManagerComponent,
@@ -38,6 +39,13 @@ const routes: Routes = [
   },
   { path: 'volunteerDetails', component: VolunteerDetailsComponent },
   { path: 'feedbackHistories', component: FeedbackHistoriesComponent },
+  {
+    path: 'newAssociationsForApproval',
+    component: NewAssociationsComponent,
+    resolve: {
+      associations: AssociationService,
+    },
+  },
 ];
 
 @NgModule({

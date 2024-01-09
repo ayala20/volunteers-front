@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignUpVolunteerComponent } from './components/sign-up-volunteer/sign-up-volunteer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -25,18 +25,22 @@ import { SignUpManagerComponent } from './components/sign-up-manager/sign-up-man
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AssociationRegistrationComponent } from './components/association-registration/association-registration.component';
+import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
+import { NewAssociationsComponent } from './components/new-associations/new-associations.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    SignUpComponent,
+    SignUpVolunteerComponent,
     RequestComponent,
     MenuComponent,
     VolunteerDetailsComponent,
     FeedbackHistoriesComponent,
     SignUpManagerComponent,
     AssociationRegistrationComponent,
+    AlertDialogComponent,
+    NewAssociationsComponent,
   ],
   imports: [
     BrowserModule,

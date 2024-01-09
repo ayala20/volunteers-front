@@ -21,10 +21,10 @@
             </div>
 
             <mat-form-field [color]="color" appearance="fill" class="col-12">
-                <mat-label>{{ userNameOrIdNumber }}</mat-label>
+                <mat-label>{{ emailOrIdNumber }}</mat-label>
                 <input matInput formControlName="idNumberControl">
                 <mat-error *ngIf="signInForm.get('idNumberControl')?.hasError('required')">
-                    {{ userNameOrIdNumber }} <strong>חובה</strong>
+                    {{ emailOrIdNumber }} <strong>חובה</strong>
                 </mat-error>
             </mat-form-field>
 
@@ -34,7 +34,7 @@
                 <mat-error *ngIf="signInForm.get('passwordControl')?.hasError('required')">
                     סיסמה <strong>חובה</strong>
                 </mat-error>
-                <mat-error *ngIf="signInForm.get('passwordControl')?.hasError('minLength')">
+                <mat-error *ngIf="signInForm.get('passwordControl')?.hasError('minlength')">
                     סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
                 </mat-error>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"

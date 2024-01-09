@@ -21,6 +21,7 @@ import { AssociationRegistrationComponent } from '../association-registration/as
 export class SignUpManagerComponent {
   signUpForm: FormGroup;
   associations: Array<IAssociation> = [];
+  hide = true;
 
   constructor(
     private formBuilder: FormBuilder,

@@ -6,5 +6,5 @@ export interface IAssociation {
   phone: string;
   password?: string;
   file: string;
-  logo_image: string;
+  logo_image?: string;
 }
