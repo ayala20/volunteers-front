@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { getFromLocalStorage } from 'src/app/shared/storageUtils';
-import { IVolunteer } from '../../models/volunteer.interface';
+import { IVolunteer } from '../../../models/volunteer.interface';
 
 interface IMenu {
   name: string,

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IAssociation } from 'src/app/models/association.interface';
-import { AssociationDetailsComponent } from '../association-details/association-details.component';
+import { AssociationDetailsComponent } from '../../registrationComponents/association-details/association-details.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

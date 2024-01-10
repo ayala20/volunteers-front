@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { IAssociation } from 'src/app/models/association.interface';
 import { AssociationService } from 'src/app/services/association.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
-import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
+import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
 import { SignUpManagerComponent } from '../sign-up-manager/sign-up-manager.component';
 
 @Component({
