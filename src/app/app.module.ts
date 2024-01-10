@@ -27,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AssociationRegistrationComponent } from './components/association-registration/association-registration.component';
 import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 import { NewAssociationsComponent } from './components/new-associations/new-associations.component';
+import { AssociationDetailsComponent } from './components/association-details/association-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NewAssociationsComponent } from './components/new-associations/new-asso
     AssociationRegistrationComponent,
     AlertDialogComponent,
     NewAssociationsComponent,
+    AssociationDetailsComponent,
   ],
   imports: [
     BrowserModule,

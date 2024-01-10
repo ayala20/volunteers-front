@@ -1,9 +1,8 @@
-<div class="alert alert-success p-0 m-0" role="alert">
+<div class="alert p-0 m-0" [ngClass]="data.class" role="alert">
     <div mat-dialog-content>
-        <p>בקשתך לפתיחת מערך התנדבות בארגון שלך התקבלה בהצלחה!</p>
-        <p>המתן לאישור המנהל עבור רישום מנהל אחראי התנדבות.</p>
+        <div [innerHTML]="data.content"></div>
     </div>
     <div mat-dialog-actions>
-        <button mat-button mat-dialog-close routerLink="/logIn">Close</button>
+        <button mat-button mat-dialog-close [routerLink]="data.link">Close</button>
     </div>
 </div>

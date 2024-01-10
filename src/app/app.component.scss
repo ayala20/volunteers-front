@@ -10,3 +10,7 @@ $red-color: #E53435;
 .mybutton {
     background-color: rgba($color: #E53435, $alpha: 1.0) !important
 }
+
+.myTitleModel {
+    background-color: rgba($color: $red-color, $alpha: 0.8);
+}

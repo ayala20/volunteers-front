@@ -50,6 +50,12 @@ export class LogInComponent {
     }
   }
 
+  f() {
+    this.router.navigate(['/signUpManager'], {
+      state: { status: 'APPROVED' },
+    });
+  }
+
   signIn() {
     if (!this.signInForm.valid) return;
     if (this.signUser == 'v') {

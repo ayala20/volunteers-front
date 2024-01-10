@@ -4,4 +4,5 @@ export interface IManager {
   phone: string;
   email: string;
   association: string;
+  passwordAssociation: string;
 }

@@ -4,7 +4,7 @@ import { IVolunteer } from '../../models/volunteer.interface';
 
 interface IMenu {
   name: string,
-  rout: string
+  rout: string,
 }
 
 @Component({
@@ -32,7 +32,7 @@ export class MenuComponent {
           rout: '/feedbackHistories',
         },
       ];
-    } else if ((user.branch_id != null || user.branch_id != undefined) && user.roleUser == 2) {
+    } else if (user.roleUser == 2) {
       this.listMenu = [
         {
           name: 'בקשות התנדבות לאישור',

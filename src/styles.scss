@@ -35,7 +35,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 180px;
     border-top: 1px solid #E53435;
     border-bottom: 1px solid #E53435
-
 }
 
 
@@ -44,4 +43,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border-radius: 50%;
     background-color: rgba($color: #fff, $alpha: 0.5);
     box-shadow: rgba($color: #fff, $alpha: 1.0) 0px 0px 20px 20px;
+}
+
+.myTitleModel {
+    background-color: rgba($color: #E53435, $alpha: 0.8);
 }

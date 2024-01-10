@@ -13,8 +13,8 @@
 
             <mat-form-field appearance="fill" class="col-md-6 col-12">
                 <mat-label>שם מלא</mat-label>
-                <input matInput type="text" formControlName="fullNameControl">
-                <mat-error *ngIf="signUpForm.get('fullNameControl')?.hasError('required')">
+                <input matInput type="text" formControlName="nameControl">
+                <mat-error *ngIf="signUpForm.get('nameControl')?.hasError('required')">
                     שם מלא <strong>חובה</strong>
                 </mat-error>
             </mat-form-field>
@@ -59,7 +59,7 @@
             <mat-form-field appearance="fill" class="col-md-6 col-12">
                 <mat-label>בחר עמותה</mat-label>
                 <mat-select formControlName="associationControl">
-                    <mat-option value="association.id" *ngFor="let association of associations">{{ association.name
+                    <mat-option [value]="association.id" *ngFor="let association of associations">{{ association.name
                         }}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="signUpForm.get('associationControl')?.hasError('required')">

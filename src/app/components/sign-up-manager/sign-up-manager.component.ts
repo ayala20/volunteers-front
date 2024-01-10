@@ -32,7 +32,7 @@ export class SignUpManagerComponent {
   ) {
     this.associations = this.route.snapshot.data['associations'];
     this.signUpForm = this.formBuilder.group({
-      fullNameControl: new FormControl('', [Validators.required]),
+      nameControl: new FormControl('', [Validators.required]),
       phoneControl: new FormControl('', [
         Validators.required,
         Validators.pattern('[0-9]{10}'),
@@ -51,13 +51,15 @@ export class SignUpManagerComponent {
   }
 
   signUp() {
+    debugger
     if (!this.signUpForm.valid) return;
     const newManager: IManager = {
-      name: this.signUpForm.value.fullNameControl,
+      name: this.signUpForm.value.nameControl,
       phone: this.signUpForm.value.phoneControl,
       email: this.signUpForm.value.emailControl,
       password: this.signUpForm.value.passwordControl,
       association: this.signUpForm.value.associationControl,
+      passwordAssociation: this.signUpForm.value.passwordAssociationControl
     };
     this.managerService.createManager(newManager).subscribe((data) => {
       saveToLocalStorage('user', data);

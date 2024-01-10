@@ -1,0 +1,41 @@
+<div class="myTitleModel">
+    <button mat-button mat-dialog-close>✖️</button>
+    <p class="h3 col-12 mb-3 text-center pb-2">{{ data.association.name }}</p>
+</div>
+<mat-dialog-content class="mat-typography px-0 m-0">
+    <div class="d-flex h-100 flex-column align-items-center text-center">
+
+        <div class="col-md-10 col-12">
+
+            <div class="row m-0">
+
+                <div class="d-flex justify-content-center flex-column align-items-center">
+                    <div class="logo mb-3 d-flex justify-content-center align-items-center">
+                        <img class="logoImg rounded-circle " width="100%"
+                            [src]="url + '/images/' + data.association.logo_image">
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-12">
+                    <div><strong>כתובת:</strong> {{ data.association.address }}</div>
+                    <div><strong>דוא"ל:</strong> {{ data.association.email }}</div>
+                    <div><strong>טלפון:</strong> {{ data.association.phone }}</div>
+                </div>
+
+                <a></a>
+                <div>
+                    <a mat-raised-button class="linkForFile col-md-6 col-12 mb-2"
+                    [href]="url + '/pdf/' + data.association.file" target="_blank">צפיה במסמך העמותה</a>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <button mat-raised-button class="mybutton col-12 mt-2" (click)="onApproved()">אישור</button>
+                </div>
+                <div class="col-md-6 col-12">
+                    <button mat-raised-button class="mybutton col-12 mt-2" (click)="onCancel()">דחיה</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

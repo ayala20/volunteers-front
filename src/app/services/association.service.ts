@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { IAssociation } from '../models/association.interface';
-import { Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +11,10 @@ import { Resolve } from '@angular/router';
 export class AssociationService implements Resolve<Array<IAssociation>> {
   apiUrl: string = environment.apiUrl;
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
-  getAssociation(is_approved: boolean): Observable<Array<IAssociation>> {
-    let url = `${this.apiUrl}/association/${is_approved}`;
+  getAssociation(status: string): Observable<Array<IAssociation>> {
+    let url = `${this.apiUrl}/association/${status}`;
     return this._http.get<Array<IAssociation>>(url);
   }
 
@@ -27,7 +27,7 @@ export class AssociationService implements Resolve<Array<IAssociation>> {
   }
 
   uploadFile(formDataFile: FormData) {
-    let url = this.apiUrl + '/association/uploadFile';    
+    let url = this.apiUrl + '/association/uploadFile';
     return this._http.post<any>(url, formDataFile);
   }
 
@@ -36,7 +36,19 @@ export class AssociationService implements Resolve<Array<IAssociation>> {
     return this._http.post<any>(url, formDataImage);
   }
 
-  resolve(): Observable<Array<IAssociation>> {
-    return this.getAssociation(false);
+  resolve(route: ActivatedRouteSnapshot): Observable<Array<IAssociation>> {
+    let status = 'APPROVED'
+    if (route.routeConfig?.path == 'signUpManager')
+      status = 'APPROVED'
+    else if (route.routeConfig?.path == 'newAssociationsForApproval')
+      status = 'NEW'
+    return this.getAssociation(status);
   }
+
+  updateStatus(id: string, status: string) {
+    let url = `${this.apiUrl}/association/${id}/${status}`;
+    const options = { responseType: 'text' as 'text' }
+    return this._http.put<String>(url, options);
+  }
+
 }

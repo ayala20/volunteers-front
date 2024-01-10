@@ -6,9 +6,9 @@
                     <img class="logoImg rounded-circle " src="../../../assets/logo.png">
                 </div>
             </div>
-            <p class="h4 col-12 mb-3">רשימת העמותות שלא אושרו</p>
+            <p class="h4 col-12 mb-3">רשימת העמותות שלא אושרו או נדחו</p>
             <div *ngFor="let association of associations" class="col-md-12 col-12">
-                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2">
+                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2" (click)="openDialog(association)">
                     <p class="h5">{{association.name}}</p>
                 </button>
             </div>

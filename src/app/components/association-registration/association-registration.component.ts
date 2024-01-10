@@ -42,7 +42,7 @@ export class AssociationRegistrationComponent {
       ]),
       phoneControl: new FormControl('', [
         Validators.required,
-        Validators.pattern('[0-9]{10}'),
+        Validators.pattern('[0-9]{9,10}'),
       ]),
       fileControl: new FormControl('', [Validators.required]),
       logoImageControl: new FormControl('', [Validators.required]),
@@ -97,7 +97,15 @@ export class AssociationRegistrationComponent {
       .subscribe((data) => {
         this.router.navigate(['/signUpManager']);
         this.dialogRef.close();
-        this.dialog.open(AlertDialogComponent);
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            content: "בקשתך לפתיחת מערך התנדבות בארגון שלך התקבלה בהצלחה!" +
+              "<br />" +
+              "המתן לאישור המנהל עבור רישום מנהל אחראי התנדבות.",
+            class: 'alert-success',
+            link: '/logIn'
+          }
+        });
       });
   }
 }
