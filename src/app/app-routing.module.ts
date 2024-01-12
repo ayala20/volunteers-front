@@ -12,6 +12,8 @@ import { CategoryService } from './services/category.service';
 import { SignUpManagerComponent } from './components/registrationComponents/sign-up-manager/sign-up-manager.component';
 import { AssociationService } from './services/association.service';
 import { NewAssociationsComponent } from './components/managerComponents/new-associations/new-associations.component';
+import { VolunteersForApprovalComponent } from './components/responsibleComponents/volunteers-for-approval/volunteers-for-approval.component';
+import { FreeActivityService } from './services/free-activity.service';
 
 const routes: Routes = [
   { path: '', component: MenuComponent, canActivate: [AuthGuard] },
@@ -46,6 +48,13 @@ const routes: Routes = [
       associations: AssociationService,
     },
   },
+  {
+    path: 'volunteersForApproval',
+    component: VolunteersForApprovalComponent,
+    resolve: {
+      freeActivities: FreeActivityService,
+    },
+  }
 ];
 
 @NgModule({

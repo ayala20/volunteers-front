@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { IAssociation } from 'src/app/models/association.interface';
+import { IAssociation, IAssociationCreate } from 'src/app/models/association.interface';
 import { AssociationService } from 'src/app/services/association.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
@@ -75,7 +75,7 @@ export class AssociationRegistrationComponent {
     let name2 = date + '.' + this.selectedImage.name.split('.').pop()
     formDataImage.append('image', this.selectedImage, name2);
 
-    const newAssociation: IAssociation = {
+    const newAssociation: IAssociationCreate = {
       name: this.registerationForm.value.nameControl,
       address: this.registerationForm.value.addressControl,
       email: this.registerationForm.value.emailControl,

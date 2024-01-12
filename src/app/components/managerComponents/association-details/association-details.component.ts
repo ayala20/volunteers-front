@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { IAssociation } from 'src/app/models/association.interface';
 import { environment } from 'src/environment/environment';
-import { NewAssociationsComponent } from '../../managerComponents/new-associations/new-associations.component';
+import { NewAssociationsComponent } from '../new-associations/new-associations.component';
 import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
 import { AssociationService } from 'src/app/services/association.service';
 
@@ -22,16 +22,11 @@ export class AssociationDetailsComponent {
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<NewAssociationsComponent>,
     private associationService: AssociationService
-  ) {
-    console.log(this.url + '/images/' + data.association.logo_image);
-  }
+  ) {}
 
   onApproved() {
     debugger
     this.associationService.updateStatus(this.data.association.id!, "APPROVED").subscribe(data => {
-      debugger
-      console.log(data);
-
       this.dialogRef.close()
       this.dialog.open(AlertDialogComponent, {
         data: {

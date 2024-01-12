@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IVolunteer } from 'src/app/models/volunteer.interface';
+import { IVolunteer, IVolunteerCreate } from 'src/app/models/volunteer.interface';
 import { VolunteerService } from 'src/app/services/volunteer.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { dateOfBirthValidator } from 'src/app/validators/dateOfBirthValidator';
@@ -50,7 +50,7 @@ export class SignUpVolunteerComponent {
 
   signUp() {
     if (!this.signUpForm.valid) return;
-    const newVolunteer: IVolunteer = {
+    const newVolunteer: IVolunteerCreate = {
       full_name: this.signUpForm.value.fullNameControl,
       address: this.signUpForm.value.addressControl,
       phone: this.signUpForm.value.phoneControl,
@@ -66,16 +66,9 @@ export class SignUpVolunteerComponent {
 
   isAgeBelow18(): boolean {
     const dateOfBirth = this.signUpForm.get('dateOfBirthControl')?.value;
-
-    // בדיקה שהתאריך לידה הוא לפני 18 שנה מהיום הנוכחי
     const today = new Date();
     const birthDate = new Date(dateOfBirth);
     const age = today.getFullYear() - birthDate.getFullYear();
-
-    if (age < 18) {
-      return true;
-    }
-
-    return false;
+    return age < 18;
   }
 }

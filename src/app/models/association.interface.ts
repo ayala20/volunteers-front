@@ -8,3 +8,12 @@ export interface IAssociation {
   file: string;
   logo_image?: string;
 }
+
+export interface IAssociationCreate {
+  name: string;
+  address: string;
+  email: string;
+  phone: string;
+  file: string;
+  logo_image?: string;
+}

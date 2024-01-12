@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { IManager } from '../models/manager.interface';
+import { IManager, IManagerCreate } from '../models/manager.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class ManagerService {
     return this._http.get<Array<IManager>>(url);
   }
 
-  createManager(manager: IManager): Observable<any> {
+  createManager(manager: IManagerCreate): Observable<any> {
     let url = this.apiUrl + '/manager';
     return this._http.post<any>(url, manager);
   }

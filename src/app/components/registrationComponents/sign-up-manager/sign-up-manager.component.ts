@@ -8,7 +8,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAssociation } from 'src/app/models/association.interface';
-import { IManager } from 'src/app/models/manager.interface';
+import { IManager, IManagerCreate } from 'src/app/models/manager.interface';
 import { ManagerService } from 'src/app/services/manager.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { AssociationRegistrationComponent } from '../association-registration/association-registration.component';
@@ -53,7 +53,7 @@ export class SignUpManagerComponent {
   signUp() {
     debugger
     if (!this.signUpForm.valid) return;
-    const newManager: IManager = {
+    const newManager: IManagerCreate = {
       name: this.signUpForm.value.nameControl,
       phone: this.signUpForm.value.phoneControl,
       email: this.signUpForm.value.emailControl,
@@ -61,7 +61,7 @@ export class SignUpManagerComponent {
       association: this.signUpForm.value.associationControl,
       passwordAssociation: this.signUpForm.value.passwordAssociationControl
     };
-    this.managerService.createManager(newManager).subscribe((data) => {
+    this.managerService.createManager(newManager).subscribe((data: IManager) => {
       saveToLocalStorage('user', data);
       this.router.navigate(['/menu']);
     });

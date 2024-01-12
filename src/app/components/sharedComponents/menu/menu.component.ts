@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { getFromLocalStorage } from 'src/app/shared/storageUtils';
 import { IVolunteer } from '../../../models/volunteer.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { AddingVolunteeringComponent } from '../../responsibleComponents/adding-volunteering/adding-volunteering.component';
 
 interface IMenu {
   name: string,
@@ -14,10 +16,10 @@ interface IMenu {
 })
 export class MenuComponent {
   listMenu: Array<IMenu> = [];
-
-  constructor() {
-    let user = getFromLocalStorage('user');
-    if ((user.roleUser != null || user.roleUser != undefined) && user.roleUser == 1) {
+  user: any = {}
+  constructor(public dialog: MatDialog) {
+    this.user = getFromLocalStorage('user');
+    if ((this.user.roleUser != null || this.user.roleUser != undefined) && this.user.roleUser == 1) {
       this.listMenu = [
         {
           name: 'אני רוצה להתנדב היום',
@@ -32,11 +34,11 @@ export class MenuComponent {
           rout: '/feedbackHistories',
         },
       ];
-    } else if (user.roleUser == 2) {
+    } else if (this.user.roleUser == 2) {
       this.listMenu = [
         {
           name: 'בקשות התנדבות לאישור',
-          rout: '/request',
+          rout: '/volunteersForApproval',
         },
         {
           name: 'סטטוס התנדבויות בסניף',
@@ -55,7 +57,7 @@ export class MenuComponent {
           rout: '/request',
         },
       ];
-    } else if (user.roleUser == 3) {
+    } else if (this.user.roleUser == 3) {
       this.listMenu = [
         {
           name: 'עמותות חדשות לאישור',
@@ -83,5 +85,13 @@ export class MenuComponent {
         },
       ];
     }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddingVolunteeringComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

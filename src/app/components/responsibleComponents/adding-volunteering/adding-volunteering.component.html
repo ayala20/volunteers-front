@@ -1,0 +1,73 @@
+<div class="myTitleModel">
+    <button mat-button mat-dialog-close>✖️</button>
+    <p class="h3 col-12 mb-3 text-center pb-2">הוספת התנדבות</p>
+</div>
+<mat-dialog-content class="mat-typography px-0">
+    <form class="d-flex h-100 flex-column align-items-center text-center" [formGroup]="freeActivityForm"
+        (submit)="createFreeActivity()">
+
+        <div class="col-lg-8 col-12 px-4">
+
+            <div class="row">
+
+                <mat-form-field appearance="fill" class="col-md-4 col-12">
+                    <mat-label>שם ההתנדבות</mat-label>
+                    <input matInput type="text" formControlName="nameControl">
+                    <mat-error *ngIf="freeActivityForm.get('nameControl')?.hasError('required')">
+                        שם <strong>חובה</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col-md-4 col-12">
+                    <mat-label>בחר מחוז</mat-label>
+                    <mat-select formControlName="districtControl">
+                        <mat-option [value]="district.district_id" *ngFor="let district of districts">
+                            {{ district.district_name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="freeActivityForm.get('districtControl')?.hasError('required')">
+                        מחוז <strong>חובה</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col-md-4 col-12">
+                    <mat-label>בחר קטגוריה</mat-label>
+                    <mat-select formControlName="categoryControl">
+                        <mat-option [value]="categorie.category_id" *ngFor="let categorie of categories">
+                            {{ categorie.category_name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="freeActivityForm.get('categoryControl')?.hasError('required')">
+                        קטגוריה <strong>חובה</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col-md-6 col-12">
+                    <mat-label>כתובת ההתנדבות</mat-label>
+                    <input matInput type="text" formControlName="addressControl">
+                    <mat-error *ngIf="freeActivityForm.get('addressControl')?.hasError('required')">
+                        כתובת <strong>חובה</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col-md-6 col-12">
+                    <mat-label>תאריך ושעה</mat-label>
+                    <input matInput type="datetime-local" formControlName="dateAndTimeControl">
+                    <mat-error *ngIf="freeActivityForm.get('dateAndTimeControl')?.hasError('required')">
+                        תאריך ושעה <strong>חובה</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col-md-12 col-12">
+                    <mat-label>פרוט על ההתנדבות</mat-label>
+                    <textarea matInput formControlName="descriptionControl"></textarea>
+                </mat-form-field>
+
+                <div>
+                    <button mat-raised-button class="mybutton col-12">הוסף התנדבות</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>

@@ -12,8 +12,18 @@
             <p class="h2 col-12 mb-3">תפריט</p>
 
             <div *ngFor="let item of listMenu">
-                <button mat-raised-button type="button" class="mybutton col-12 w-100 mt-2 py-4 h5" 
-                [routerLink]="item.rout">{{ item.name }}</button>
+                <button mat-raised-button type="button" class="mybutton col-12 w-100 mt-2 py-4 h5"
+                    [routerLink]="item.rout">{{ item.name }}</button>
+            </div>
+
+            <div *ngIf="user.roleUser == 2">
+                <button mat-button class="h4 col-12 pt-2" type="button" (click)="openDialog()">
+                    <p class="d-flex align-items-center">
+                        <mat-icon class="icon" fontIcon="add_box"></mat-icon>
+                        &nbsp;
+                        הוספת התנדבות
+                    </p>
+                </button>
             </div>
 
         </div>

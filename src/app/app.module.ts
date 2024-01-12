@@ -27,8 +27,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AssociationRegistrationComponent } from './components/registrationComponents/association-registration/association-registration.component';
 import { AlertDialogComponent } from './components/sharedComponents/alert-dialog/alert-dialog.component';
 import { NewAssociationsComponent } from './components/managerComponents/new-associations/new-associations.component';
-import { AssociationDetailsComponent } from './components/registrationComponents/association-details/association-details.component';
+import { AssociationDetailsComponent } from './components/managerComponents/association-details/association-details.component';
 import { StatusesComponent } from './components/managerComponents/statuses/statuses.component';
+import { AddingVolunteeringComponent } from './components/responsibleComponents/adding-volunteering/adding-volunteering.component';
+import { VolunteersForApprovalComponent } from './components/responsibleComponents/volunteers-for-approval/volunteers-for-approval.component';
+import { FreeActivityDetailsComponent } from './components/volunteerComponents/free-activity-details/free-activity-details.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { StatusesComponent } from './components/managerComponents/statuses/statu
     NewAssociationsComponent,
     AssociationDetailsComponent,
     StatusesComponent,
+    AddingVolunteeringComponent,
+    VolunteersForApprovalComponent,
+    FreeActivityDetailsComponent,
   ],
   imports: [
     BrowserModule,

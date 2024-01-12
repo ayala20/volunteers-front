@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
-import { IVolunteer } from '../models/volunteer.interface';
+import { IVolunteer, IVolunteerCreate } from '../models/volunteer.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class VolunteerService {
     return this._http.get<Array<IVolunteer>>(url);
   }
 
-  createVolunteer(volunteer: IVolunteer): Observable<any> {
+  createVolunteer(volunteer: IVolunteerCreate): Observable<any> {
     let url = this.apiUrl + '/volunteer';
     return this._http.post<any>(url, volunteer);
   }

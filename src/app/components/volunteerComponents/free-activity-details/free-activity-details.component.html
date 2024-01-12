@@ -1,0 +1,27 @@
+<div class="myTitleModel">
+    <button mat-button mat-dialog-close>✖️</button>
+    <p class="h3 col-12 mb-3 text-center pb-2">{{ data.freeActivity.name }}</p>
+</div>
+<mat-dialog-content class="mat-typography px-0 m-0">
+    <div class="d-flex h-100 flex-column align-items-center text-center">
+
+        <div class="col-md-10 col-12">
+
+            <div class="row m-0">
+
+                <div class="col-md-12 col-12">
+                    <div><strong>תאור ההתנדבות:</strong> {{ data.freeActivity.description }}</div>
+                    <div><strong>מיקום ההתנדבות:</strong> {{ data.freeActivity.address }}</div>
+                    <div><strong>תאריך ושעת ההתנדבות:</strong> {{ data.freeActivity.dateAndTime }}</div>
+                    <div><strong>מחוז:</strong> {{ data.freeActivity.district.district_name }}</div>
+                    <div><strong>קטגוריה:</strong> {{ data.freeActivity.category.category_name }}</div>
+                    <div><strong>שם עמותה:</strong> {{ data.freeActivity.manager.association.name }}</div>
+                </div>
+
+                <div class="col-md-12 col-12">
+                    <button mat-raised-button class="mybutton col-12 mt-2" (click)="onWant()">אני רוצה את ההתנדבות הזו</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

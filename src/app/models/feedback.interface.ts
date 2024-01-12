@@ -1,6 +1,10 @@
 export interface IFeedBack {
-  receipt_date: Date;
-  rating: string;
-  location: string;
-  volunteer_id: string;
+  feedback_id: string;
+  date: Date;
+  rating: number;
+}
+
+export interface IFeedBackCreate {
+  date: Date;
+  rating: number;
 }
