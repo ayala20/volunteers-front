@@ -1,0 +1,41 @@
+<form class="d-flex h-100 flex-column align-items-center text-center">
+
+    <div class="col-lg-4 col-12 px-4 pb-4">
+
+        <div class="row">
+
+            <p class="h2 col-12 my-3">פרטי ההתנדבויות שלי:</p>
+
+            <div class="h6">
+                <div class="alert alert-info" role="alert">
+                    שים לב! ברשימה זו מופיעים רק התנדבויות שאושרו לך,
+                    במידה ויש התנדבות שלא אושרה היא לא תופיע ברשימה זו.
+                </div>
+            </div>
+
+            <div *ngIf="freeActivities.length > 0" class="w-100 bg-light h6">
+                <div class="row border text-light bg-dark py-1">
+                    <div style="width: 10%;"></div>
+                    <div *ngFor="let title of displayedColumns" class="myCol">
+                        <strong>
+                            {{title}}
+                        </strong>
+                    </div>
+                </div>
+
+                <div *ngFor="let row of dataSource" class="row">
+                    <button class="myBtn p-0 m-0" style="width: 10%;" type="button" (click)="onOpenDetails(row)">
+                        <mat-icon class="icon" fontIcon="create"></mat-icon>
+                    </button>
+                    <div class="myCol">
+                        {{ row.category.category_name }}
+                    </div>
+                    <div class="myCol">
+                        {{ row.manager.association.name }}
+                    </div>
+                    <div class="myCol" *ngIf="row.status == 'APPROVED'">כנס לאשר</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

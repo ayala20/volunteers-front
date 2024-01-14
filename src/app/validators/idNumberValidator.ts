@@ -17,8 +17,6 @@ export function idNumberValidator(): ValidatorFn {
       total += Number(currentNum);
     }
 
-    console.log(total);
-
     if (total % 10 != 0 || id.length != 9) {
       return { underEighteen: true };
     }

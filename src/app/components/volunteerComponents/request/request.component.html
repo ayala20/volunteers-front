@@ -42,7 +42,7 @@
         </div>
 
         <div class="row" *ngIf="this.step == 3">
-            <div *ngIf="freeActivities.length == 0" class="h4">
+            <div *ngIf="freeActivities.length != 0" class="h4">
                 אלו כל ההתנדבויות שעלו בחיפוש שלך
             </div>
             <div *ngFor="let freeActivity of freeActivities" class="col-md-12 col-12">

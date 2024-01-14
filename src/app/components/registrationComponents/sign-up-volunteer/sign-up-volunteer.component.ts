@@ -45,6 +45,10 @@ export class SignUpVolunteerComponent {
         Validators.required,
         Validators.minLength(8),
       ]),
+      emailControl: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
     });
   }
 
@@ -57,6 +61,7 @@ export class SignUpVolunteerComponent {
       dateOfBirth: new Date(this.signUpForm.value.dateOfBirthControl),
       id_number: this.signUpForm.value.idNumberControl,
       password: this.signUpForm.value.passwordControl,
+      email: this.signUpForm.value.emailControl,
     };
     this.volunteerService.createVolunteer(newVolunteer).subscribe((data) => {
       saveToLocalStorage('user', data);

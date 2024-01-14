@@ -19,7 +19,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AuthGuard } from './auth.guard';
 import { RequestComponent } from './components/volunteerComponents/request/request.component';
 import { MenuComponent } from './components/sharedComponents/menu/menu.component';
-import { VolunteerDetailsComponent } from './components/volunteerComponents/volunteer-details/volunteer-details.component';
 import { FeedbackHistoriesComponent } from './components/volunteerComponents/feedback-histories/feedback-histories.component';
 import { SignUpManagerComponent } from './components/registrationComponents/sign-up-manager/sign-up-manager.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -32,6 +31,18 @@ import { StatusesComponent } from './components/managerComponents/statuses/statu
 import { AddingVolunteeringComponent } from './components/responsibleComponents/adding-volunteering/adding-volunteering.component';
 import { VolunteersForApprovalComponent } from './components/responsibleComponents/volunteers-for-approval/volunteers-for-approval.component';
 import { FreeActivityDetailsComponent } from './components/volunteerComponents/free-activity-details/free-activity-details.component';
+import { DatePipe } from '@angular/common';
+import { FreeActivityWithvolunteerDetailsComponent } from './components/responsibleComponents/free-activity-withvolunteer-details/free-activity-withvolunteer-details.component';
+import { ReportsOfAssociationsComponent } from './components/managerComponents/reports-of-associations/reports-of-associations.component';
+import { ReportsOfVolunteersComponent } from './components/managerComponents/reports-of-volunteers/reports-of-volunteers.component';
+import { ReadingFeedbackComponent } from './components/managerComponents/reading-feedback/reading-feedback.component';
+import { FreeActivitiesStatusesComponent } from './components/responsibleComponents/free-activities-statuses/free-activities-statuses.component';
+import { FreeActivitiesCurrentComponent } from './components/responsibleComponents/free-activities-current/free-activities-current.component';
+import { FreeActivitiesCompletedComponent } from './components/responsibleComponents/free-activities-completed/free-activities-completed.component';
+import { VolunteerFeedbackComponent } from './components/responsibleComponents/volunteer-feedback/volunteer-feedback.component';
+import { MyFreeActivityDetailsComponent } from './components/volunteerComponents/my-free-activity-details/my-free-activity-details.component';
+import { MatTableModule } from '@angular/material/table';
+import { EditFreeActivityFormComponent } from './components/volunteerComponents/edit-free-activity-form/edit-free-activity-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +51,6 @@ import { FreeActivityDetailsComponent } from './components/volunteerComponents/f
     SignUpVolunteerComponent,
     RequestComponent,
     MenuComponent,
-    VolunteerDetailsComponent,
     FeedbackHistoriesComponent,
     SignUpManagerComponent,
     AssociationRegistrationComponent,
@@ -51,6 +61,16 @@ import { FreeActivityDetailsComponent } from './components/volunteerComponents/f
     AddingVolunteeringComponent,
     VolunteersForApprovalComponent,
     FreeActivityDetailsComponent,
+    FreeActivityWithvolunteerDetailsComponent,
+    ReportsOfAssociationsComponent,
+    ReportsOfVolunteersComponent,
+    ReadingFeedbackComponent,
+    FreeActivitiesStatusesComponent,
+    FreeActivitiesCurrentComponent,
+    FreeActivitiesCompletedComponent,
+    VolunteerFeedbackComponent,
+    MyFreeActivityDetailsComponent,
+    EditFreeActivityFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,8 +89,9 @@ import { FreeActivityDetailsComponent } from './components/volunteerComponents/f
     MatNativeDateModule,
     MatSelectModule,
     MatDialogModule,
+    MatTableModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

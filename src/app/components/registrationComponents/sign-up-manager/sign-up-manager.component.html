@@ -34,7 +34,7 @@
                 <mat-label>דוא"ל</mat-label>
                 <input matInput type="email" formControlName="emailControl">
                 <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('required')">
-                    תאריך לידה <strong>חובה</strong>
+                    דוא"ל <strong>חובה</strong>
                 </mat-error>
                 <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('email')">
                     כתובת דוא"ל <strong>לא תקינה</strong>

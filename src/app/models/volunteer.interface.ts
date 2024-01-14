@@ -6,6 +6,7 @@ export interface IVolunteer {
   dateOfBirth: Date;
   id_number: string;
   password: string;
+  email: string;
 }
 
 export interface IVolunteerCreate {
@@ -15,4 +16,5 @@ export interface IVolunteerCreate {
   dateOfBirth: Date;
   id_number: string;
   password: string;
+  email: string;
 }

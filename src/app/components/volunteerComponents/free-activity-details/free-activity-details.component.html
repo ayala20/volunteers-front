@@ -12,7 +12,7 @@
                 <div class="col-md-12 col-12">
                     <div><strong>תאור ההתנדבות:</strong> {{ data.freeActivity.description }}</div>
                     <div><strong>מיקום ההתנדבות:</strong> {{ data.freeActivity.address }}</div>
-                    <div><strong>תאריך ושעת ההתנדבות:</strong> {{ data.freeActivity.dateAndTime }}</div>
+                    <div><strong>תאריך ושעת ההתנדבות:</strong> {{ convertISODateToRegularFormat(data.freeActivity.dateAndTime) }}</div>
                     <div><strong>מחוז:</strong> {{ data.freeActivity.district.district_name }}</div>
                     <div><strong>קטגוריה:</strong> {{ data.freeActivity.category.category_name }}</div>
                     <div><strong>שם עמותה:</strong> {{ data.freeActivity.manager.association.name }}</div>

@@ -11,7 +11,7 @@
 
             <p class="h2 col-12 mb-3">הרשמת מתנדב</p>
 
-            <mat-form-field appearance="fill" class="col-md-6 col-12">
+            <mat-form-field appearance="fill" class="col-md-4 col-12">
                 <mat-label>שם מלא</mat-label>
                 <input matInput type="text" formControlName="fullNameControl">
                 <mat-error *ngIf="signUpForm.get('fullNameControl')?.hasError('required')">
@@ -19,7 +19,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="col-md-6 col-12">
+            <mat-form-field appearance="fill" class="col-md-4 col-12">
                 <mat-label>מספר טלפון</mat-label>
                 <input matInput type="tel" formControlName="phoneControl">
                 <mat-error *ngIf="signUpForm.get('phoneControl')?.hasError('required')">
@@ -27,6 +27,28 @@
                 </mat-error>
                 <mat-error *ngIf="signUpForm.get('phoneControl')?.hasError('pattern')">
                     טלפון <strong>לא תקין</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-4 col-12">
+                <mat-label>תעודת זהות</mat-label>
+                <input matInput type="text" formControlName="idNumberControl">
+                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('required')">
+                    מספר זהות <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('idNumberValidator()')">
+                    מספר זהות <strong>לא תקין</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-6 col-12">
+                <mat-label>דוא"ל</mat-label>
+                <input matInput type="email" formControlName="emailControl">
+                <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('required')">
+                    דוא"ל <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('emailControl')?.hasError('email')">
+                    כתובת דוא"ל <strong>לא תקינה</strong>
                 </mat-error>
             </mat-form-field>
 
@@ -49,16 +71,6 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="col-md-6 col-12">
-                <mat-label>תעודת זהות</mat-label>
-                <input matInput type="text" formControlName="idNumberControl">
-                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('required')">
-                    מספר זהות <strong>חובה</strong>
-                </mat-error>
-                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('idNumberValidator()')">
-                    מספר זהות <strong>לא תקין</strong>
-                </mat-error>
-            </mat-form-field>
 
             <mat-form-field appearance="fill" class="col-md-6 col-12">
                 <mat-label>מה הסיסמה שלך?</mat-label>

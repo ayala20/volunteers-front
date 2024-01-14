@@ -26,8 +26,8 @@ export class MenuComponent {
           rout: '/request',
         },
         {
-          name: 'פרטי התנדבות שלי',
-          rout: '/volunteerDetails',
+          name: 'פרטי התנדבויות שלי',
+          rout: '/myFreeActivityDetails',
         },
         {
           name: 'היסטוריית משובים',
@@ -41,20 +41,20 @@ export class MenuComponent {
           rout: '/volunteersForApproval',
         },
         {
-          name: 'סטטוס התנדבויות בסניף',
-          rout: '/request',
+          name: 'סטטוס התנדבויות בעמותה',
+          rout: '/freeActivitiesStatuses',
         },
         {
           name: 'התנדבבויות נוכחיות',
-          rout: '/request',
+          rout: '/freeActivitiesCurrent',
         },
         {
           name: 'התנדבויות שסויימו',
-          rout: '/request',
+          rout: '/freeActivitiesCompleted',
         },
         {
           name: 'משובי מתנדבים',
-          rout: '/request',
+          rout: '/volunteerFeedback',
         },
       ];
     } else if (this.user.roleUser == 3) {
@@ -65,23 +65,19 @@ export class MenuComponent {
         },
         {
           name: 'סטטוסים',
-          rout: '/request',
+          rout: '/statuses',
         },
         {
           name: 'דוח עמותה מסוימת',
-          rout: '/request',
+          rout: '/reportsOfAssociations',
         },
         {
           name: 'דוח מתנדב מסוים',
-          rout: '/request',
+          rout: '/reportsOfVolunteers',
         },
         {
           name: 'קריאת משובים',
-          rout: '/request',
-        },
-        {
-          name: 'הוספת סניף',
-          rout: '/request',
+          rout: '/readingFeedback',
         },
       ];
     }

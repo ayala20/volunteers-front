@@ -4,6 +4,7 @@ import { environment } from 'src/environment/environment';
 import { IFreeActivity, IFreeActivityCreate } from '../models/freeActivity.interface';
 import { Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { getFromLocalStorage } from '../shared/storageUtils';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,13 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
     return this._http.get<Array<IFreeActivity>>(url);
   }
 
-  findAllRequest(): Observable<Array<IFreeActivity>> {
-    let url = `${this.apiUrl}/free-activity/findAllRequest`;
+  findAllRequestByManagerAndStatus(managerId: string, statuses: string[]): Observable<Array<IFreeActivity>> {
+    let url = `${this.apiUrl}/free-activity/findAllRequestByManagerAndStatus/${managerId}/${statuses}`;
+    return this._http.get<Array<IFreeActivity>>(url);
+  }
+
+  findAllRequestByVolunteerAndStatus(volunteerId: string, statuses: string[]): Observable<Array<IFreeActivity>> {
+    let url = `${this.apiUrl}/free-activity/findAllRequestByVolunteerAndStatus/${volunteerId}/${statuses}`;
     return this._http.get<Array<IFreeActivity>>(url);
   }
 
@@ -34,9 +40,20 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
     return this._http.get<Array<IFreeActivity>>(url);
   }
 
+  updateStatus(freeActivityId: string, volunteerId: string, status: string) {
+    let url = `${this.apiUrl}/free-activity/${freeActivityId}/${volunteerId}/${status}`;
+    return this._http.put<Array<IFreeActivity>>(url, {});
+  }
+
   resolve(route: ActivatedRouteSnapshot): Observable<Array<IFreeActivity>> {
-    if (route.routeConfig?.path == 'volunteersForApproval')
-      return this.findAllRequest();
+    if (route.routeConfig?.path == 'volunteersForApproval') {
+      const managerId = getFromLocalStorage("user").id
+      return this.findAllRequestByManagerAndStatus(managerId, ['REQUEST']);
+    }
+    if (route.routeConfig?.path == 'myFreeActivityDetails') {
+      const volunteerId = getFromLocalStorage("user").id
+      return this.findAllRequestByVolunteerAndStatus(volunteerId, ['APPROVED']);
+    }
     return this.getFreeActivities();
   }
 

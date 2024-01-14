@@ -44,6 +44,7 @@ export class RequestComponent {
       this.FreeActivityService.filterFreeActivitiesByDistrictAndCategory(this.districtId, this.categoryId)
       .subscribe(data => {
         this.freeActivities = data
+        console.log(this.freeActivities); 
       })
     }
   }
@@ -57,6 +58,8 @@ export class RequestComponent {
   }
 
   openDialog(freeActivity: IFreeActivity) {
+    console.log(freeActivity);
+    
     this.dialog.open(FreeActivityDetailsComponent, {
       data: {
         freeActivity

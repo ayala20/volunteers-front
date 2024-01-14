@@ -37,8 +37,9 @@ export class AssociationService implements Resolve<Array<IAssociation>> {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Array<IAssociation>> {
+    debugger
     let status = 'APPROVED'
-    if (route.routeConfig?.path == 'signUpManager')
+    if (route.routeConfig?.path == 'signUpManager' || route.routeConfig?.path == 'statuses' || route.routeConfig?.path == 'reportsOfAssociations')
       status = 'APPROVED'
     else if (route.routeConfig?.path == 'newAssociationsForApproval')
       status = 'NEW'

@@ -5,11 +5,9 @@ export function dateOfBirthValidator(): ValidatorFn {
     const birthDate = new Date(control.value);
     const eighteenYearsAgo = new Date();
     eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
-
     if (birthDate > eighteenYearsAgo) {
       return { underEighteen: true };
     }
-
     return null;
   };
 }

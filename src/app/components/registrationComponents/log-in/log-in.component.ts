@@ -6,10 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/services/manager.service';
 import { VolunteerService } from 'src/app/services/volunteer.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
+import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-log-in',
@@ -27,7 +29,8 @@ export class LogInComponent {
     private formBuilder: FormBuilder,
     public volunteerService: VolunteerService,
     public managerService: ManagerService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog,
   ) {
     this.signUser = 'v';
     this.emailOrIdNumber = 'מספר זהות';
@@ -64,20 +67,46 @@ export class LogInComponent {
           this.signInForm.value.idNumberControl,
           this.signInForm.value.passwordControl
         )
-        .subscribe((data) => {
-          saveToLocalStorage('user', data);
-          this.router.navigate(['/menu']);
-        });
+        .subscribe(
+          (data) => {
+            saveToLocalStorage('user', data);
+            this.router.navigate(['/menu']);
+          },
+          (error) => {
+            if (error.status == 404) {
+              this.openAlert()
+            }
+          },)
     } else if (this.signUser == 'm') {
       this.managerService
         .signIn(
           this.signInForm.value.idNumberControl,
           this.signInForm.value.passwordControl
         )
-        .subscribe((data) => {
-          saveToLocalStorage('user', data);
-          this.router.navigate(['/menu']);
-        });
+        .subscribe(
+          (data) => {
+            debugger
+            saveToLocalStorage('user', data);
+            this.router.navigate(['/menu']);
+          },
+          (error) => {
+            if (error.status == 404) {
+              this.openAlert()
+            }
+          },
+        );
     }
+  }
+
+  openAlert() {
+    this.dialog.open(AlertDialogComponent, {
+      data: {
+        content: `אינך קיים במערכת!` +
+          "<br />" +
+          "לחץ על הרשמה.",
+        class: 'alert-danger',
+        link: '/logIn'
+      }
+    });
   }
 }
