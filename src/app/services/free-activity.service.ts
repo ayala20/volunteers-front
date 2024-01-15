@@ -52,7 +52,7 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
     }
     if (route.routeConfig?.path == 'myFreeActivityDetails') {
       const volunteerId = getFromLocalStorage("user").id
-      return this.findAllRequestByVolunteerAndStatus(volunteerId, ['APPROVED']);
+      return this.findAllRequestByVolunteerAndStatus(volunteerId, ['TAKEN', 'DONE']);
     }
     return this.getFreeActivities();
   }

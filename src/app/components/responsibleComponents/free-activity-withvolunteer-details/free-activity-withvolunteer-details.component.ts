@@ -29,7 +29,7 @@ export class FreeActivityWithvolunteerDetailsComponent {
   }
 
   onApproved() {
-    this.freeActivityService.updateStatus(this.data.freeActivity.freeActivity_id!, "1", "APPROVED").subscribe(data => {
+    this.freeActivityService.updateStatus(this.data.freeActivity.freeActivity_id!, "1", "TAKEN").subscribe(data => {
       this.dialogRef.close()
       this.dialog.open(AlertDialogComponent, {
         data: {

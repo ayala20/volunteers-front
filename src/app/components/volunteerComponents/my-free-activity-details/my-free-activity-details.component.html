@@ -15,25 +15,40 @@
 
             <div *ngIf="freeActivities.length > 0" class="w-100 bg-light h6">
                 <div class="row border text-light bg-dark py-1">
-                    <div style="width: 10%;"></div>
-                    <div *ngFor="let title of displayedColumns" class="myCol">
+                    <div class="myCol-8"></div>
+                    <div class="myCol-36">
                         <strong>
-                            {{title}}
+                            קטגוריה
+                        </strong>
+                    </div>
+                    <div class="myCol-36">
+                        <strong>
+                            עמותה
+                        </strong>
+                    </div>
+                    <div class="myCol-20">
+                        <strong>
+                            סטטוס
                         </strong>
                     </div>
                 </div>
 
-                <div *ngFor="let row of dataSource" class="row">
-                    <button class="myBtn p-0 m-0" style="width: 10%;" type="button" (click)="onOpenDetails(row)">
-                        <mat-icon class="icon" fontIcon="create"></mat-icon>
+                <div *ngFor="let row of dataSource" class="row border">
+                    <button class="myBtn p-0 m-0 myCol-8 py-3" type="button" (click)="onOpenDetails(row)">
+                        <mat-icon class="icon" fontIcon="more_vert"></mat-icon>
                     </button>
-                    <div class="myCol">
+                    <div class="myCol-36 py-3">
                         {{ row.category.category_name }}
                     </div>
-                    <div class="myCol">
+                    <div class="myCol-36 py-3">
                         {{ row.manager.association.name }}
                     </div>
-                    <div class="myCol" *ngIf="row.status == 'APPROVED'">כנס לאשר</div>
+                    <div class="myCol-20 py-3" *ngIf="row.status == 'TAKEN'">
+                        <mat-icon class="icon" fontIcon="timer"></mat-icon>
+                    </div>
+                    <div class="myCol-20 py-3" *ngIf="row.status == 'DONE'">
+                        <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                    </div>
                 </div>
             </div>
         </div>

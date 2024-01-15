@@ -43,6 +43,8 @@ import { VolunteerFeedbackComponent } from './components/responsibleComponents/v
 import { MyFreeActivityDetailsComponent } from './components/volunteerComponents/my-free-activity-details/my-free-activity-details.component';
 import { MatTableModule } from '@angular/material/table';
 import { EditFreeActivityFormComponent } from './components/volunteerComponents/edit-free-activity-form/edit-free-activity-form.component';
+import { FeedbackFormComponent } from './components/volunteerComponents/feedback-form/feedback-form.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,7 @@ import { EditFreeActivityFormComponent } from './components/volunteerComponents/
     VolunteerFeedbackComponent,
     MyFreeActivityDetailsComponent,
     EditFreeActivityFormComponent,
+    FeedbackFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,8 @@ import { EditFreeActivityFormComponent } from './components/volunteerComponents/
     MatNativeDateModule,
     MatSelectModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule,
   ],
   providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent],

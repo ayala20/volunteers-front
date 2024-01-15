@@ -8,19 +8,26 @@
         <div class="col-md-10 col-12">
 
             <div class="row m-0">
+                <p class="h3">בהצלחה בהתנדבות!</p>
+                <p class="h1">תודה!</p>
+                <div class="col-md-12 col-12">
+                    <u>פרטי מנהל איש קשר:</u>
+                    <div><strong>שם מנהל:</strong> {{ data.freeActivity.manager.name }}</div>
+                    <div><strong>דוא"ל מנהל:</strong> {{ data.freeActivity.manager.email }}</div>
+                    <div><strong>טלפון מנהל:</strong> {{ data.freeActivity.manager.phone }}</div>
+                    <hr>
+                    <u>פרטי ההתנדבות:</u>
+                    <div><strong>כתובת ההתנדבות:</strong> {{ data.freeActivity.address }}</div>
+                    <div><strong>תאריך ושעת ההתנדבות:</strong> {{ data.freeActivity.dateAndTime }}</div>
+                    <div><strong>תאור ההתנדבבות:</strong> {{ data.freeActivity.description }}</div>
+                    <hr>
+                    <div>לסיום ההתנדבות לחץ כאן:</div>
+
+                </div>
 
                 <div class="col-md-12 col-12">
-                    <div><strong>כתובת:</strong> {{ data.freeActivity.address }}</div>
-                    <div><strong>דוא"ל:</strong> {{ data.freeActivity.category.category_name }}</div>
-                    <div><strong>טלפון:</strong> {{ data.freeActivity.district.district_name }}</div>
+                    <button mat-raised-button class="mybutton col-6 mt-2" (click)="onEnd()" type="button">סיום</button>
                 </div>
-
-                <!-- <div class="col-md-6 col-12">
-                    <button mat-raised-button class="mybutton col-12 mt-2" (click)="onApproved()">אישור</button>
-                </div>
-                <div class="col-md-6 col-12">
-                    <button mat-raised-button class="mybutton col-12 mt-2" (click)="onCancel()">דחיה</button>
-                </div> -->
 
             </div>
         </div>

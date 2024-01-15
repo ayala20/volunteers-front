@@ -22,6 +22,7 @@ import { FreeActivitiesCurrentComponent } from './components/responsibleComponen
 import { FreeActivitiesStatusesComponent } from './components/responsibleComponents/free-activities-statuses/free-activities-statuses.component';
 import { VolunteerFeedbackComponent } from './components/responsibleComponents/volunteer-feedback/volunteer-feedback.component';
 import { MyFreeActivityDetailsComponent } from './components/volunteerComponents/my-free-activity-details/my-free-activity-details.component';
+import { FeedbackFormComponent } from './components/volunteerComponents/feedback-form/feedback-form.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent, canActivate: [AuthGuard] },
@@ -82,7 +83,8 @@ const routes: Routes = [
   { path: 'freeActivitiesCompleted', component: FreeActivitiesCompletedComponent },
   { path: 'freeActivitiesCurrent', component: FreeActivitiesCurrentComponent },
   { path: 'freeActivitiesStatuses', component: FreeActivitiesStatusesComponent },
-  { path: 'volunteerFeedback', component: VolunteerFeedbackComponent }
+  { path: 'volunteerFeedback', component: VolunteerFeedbackComponent },
+  { path: 'feedbackForm', component: FeedbackFormComponent }
 ];
 
 @NgModule({
