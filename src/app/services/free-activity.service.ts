@@ -54,6 +54,18 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
       const volunteerId = getFromLocalStorage("user").id
       return this.findAllRequestByVolunteerAndStatus(volunteerId, ['TAKEN', 'DONE']);
     }
+    if (route.routeConfig?.path == 'freeActivitiesStatuses') {
+      const managerId = getFromLocalStorage("user").id
+      return this.findAllRequestByManagerAndStatus(managerId, ['TAKEN', 'DONE']);
+    }
+    if (route.routeConfig?.path == 'freeActivitiesCurrent') {
+      const managerId = getFromLocalStorage("user").id
+      return this.findAllRequestByManagerAndStatus(managerId, ['TAKEN']);
+    }
+    if (route.routeConfig?.path == 'freeActivitiesCompleted') {
+      const managerId = getFromLocalStorage("user").id
+      return this.findAllRequestByManagerAndStatus(managerId, ['DONE']);
+    }
     return this.getFreeActivities();
   }
 

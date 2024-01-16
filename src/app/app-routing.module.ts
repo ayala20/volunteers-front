@@ -80,9 +80,22 @@ const routes: Routes = [
   },
   { path: 'reportsOfVolunteers', component: ReportsOfVolunteersComponent },
   { path: 'readingFeedback', component: ReadingFeedbackComponent },
-  { path: 'freeActivitiesCompleted', component: FreeActivitiesCompletedComponent },
-  { path: 'freeActivitiesCurrent', component: FreeActivitiesCurrentComponent },
-  { path: 'freeActivitiesStatuses', component: FreeActivitiesStatusesComponent },
+  {
+    path: 'freeActivitiesCompleted', component: FreeActivitiesCompletedComponent, resolve: {
+      freeActivities: FreeActivityService,
+    },
+  },
+  {
+    path: 'freeActivitiesCurrent', component: FreeActivitiesCurrentComponent,
+    resolve: {
+      freeActivities: FreeActivityService,
+    },
+  },
+  {
+    path: 'freeActivitiesStatuses', component: FreeActivitiesStatusesComponent, resolve: {
+      freeActivities: FreeActivityService,
+    },
+  },
   { path: 'volunteerFeedback', component: VolunteerFeedbackComponent },
   { path: 'feedbackForm', component: FeedbackFormComponent }
 ];

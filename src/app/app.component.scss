@@ -1,5 +1,5 @@
 
-$red-color: #E53435;
+$red-color: #40e0d0;
 
 .mybg {
     background-color: rgba($color: #ffffff, $alpha: 0.5);
@@ -8,7 +8,7 @@ $red-color: #E53435;
 }
 
 .mybutton {
-    background-color: rgba($color: #E53435, $alpha: 1.0) !important
+    background-color: rgba($color: $red-color, $alpha: 1.0) !important
 }
 
 .myTitleModel {

@@ -1,1 +1,42 @@
-<p>free-activities-completed works!</p>
+<form class="d-flex h-100 flex-column align-items-center text-center">
+
+    <div class="col-lg-4 col-12 px-4 pb-4">
+
+        <div class="row">
+
+            <p class="h2 col-12 my-3">התנדבויות שסוימו:</p>
+
+            <div *ngIf="freeActivities.length > 0" class="w-100 bg-light h6">
+                <div class="row border text-light bg-dark py-1">
+                    <div class="myCol-36">
+                        <strong>
+                            קטגוריה
+                        </strong>
+                    </div>
+                    <div class="myCol-36">
+                        <strong>
+                            שם מתנדב
+                        </strong>
+                    </div>
+                    <div class="myCol-20">
+                        <strong>
+                            מצב
+                        </strong>
+                    </div>
+                </div>
+
+                <div *ngFor="let row of dataSource" class="row border">
+                    <div class="myCol-36 py-3">
+                        {{ row.category.category_name }}
+                    </div>
+                    <div class="myCol-36 py-3">
+                        {{ row.volunteer.full_name }}
+                    </div>
+                    <div class="myCol-20 py-3" *ngIf="row.status == 'DONE'">
+                        <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

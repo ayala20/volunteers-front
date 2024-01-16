@@ -22,15 +22,9 @@ export class MyFreeActivityDetailsComponent {
   freeActivities: Array<any> = []
   dataSource: any[] = [];
 
-  displayedColumns: string[] = ['קטגוריה', 'עמותה', 'סטטוס'];
-
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {
     this.freeActivities = this.route.snapshot.data['freeActivities'];
     this.dataSource = this.freeActivities
-  }
-
-  getFreeActivities() {
-
   }
 
   onOpenDetails(freeActivity: any) {
