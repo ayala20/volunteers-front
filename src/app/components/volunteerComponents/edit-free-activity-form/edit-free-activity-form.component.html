@@ -18,7 +18,7 @@
                     <hr>
                     <u>פרטי ההתנדבות:</u>
                     <div><strong>כתובת ההתנדבות:</strong> {{ data.freeActivity.address }}</div>
-                    <div><strong>תאריך ושעת ההתנדבות:</strong> {{ data.freeActivity.dateAndTime }}</div>
+                    <div><strong>תאריך ושעת ההתנדבות:</strong> {{ convertISODateToRegularFormat(data.freeActivity.dateAndTime) }}</div>
                     <div><strong>תאור ההתנדבבות:</strong> {{ data.freeActivity.description }}</div>
                     <hr>
                     <div>לסיום ההתנדבות לחץ כאן:</div>

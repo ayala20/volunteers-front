@@ -9,7 +9,6 @@ export interface IFreeActivity {
     manager: IManager;
     category: ICategory;
     district: IDistrict;
-    feedback?: string;
     volunteer?: IVolunteer;
     description?: string;
     dateAndTime: Date;

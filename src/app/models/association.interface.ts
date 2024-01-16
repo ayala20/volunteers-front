@@ -1,5 +1,6 @@
 export interface IAssociation {
   id?: string;
+  number: Number;
   name: string;
   address: string;
   email: string;
@@ -10,6 +11,7 @@ export interface IAssociation {
 }
 
 export interface IAssociationCreate {
+  number: number;
   name: string;
   address: string;
   email: string;

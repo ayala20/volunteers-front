@@ -2,7 +2,13 @@
 
     <div class="col-lg-4 col-12 px-4 pb-4">
 
-        <p class="h2 col-12 mb-3 mt-5 font-weight-bold"><strong>שלום {{fullName}}</strong></p>
+        <div class="d-flex justify-content-center flex-column align-items-center">
+            <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                <img class="logoImg rounded-circle " src="../../../assets/logo.png">
+            </div>
+        </div>
+        
+        <p class="h2 col-12 mb-3 mt-3 font-weight-bold"><strong>שלום {{fullName}}</strong></p>
 
         <div class="row" *ngIf="this.step == 1">
             <p class="h4 col-12 mb-3">היכן תרצה להתנדב היום?</p>
@@ -20,7 +26,7 @@
                     <p class="h5">לא משנה לי איזה מחוז</p>
                 </button>
             </div>
-            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()">הבא</button></div>
+            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()" type="button">הבא</button></div>
         </div>
 
         <div class="row" *ngIf="this.step == 2">
@@ -38,7 +44,7 @@
                     <p class="h5">לא משנה לי איזה תחום</p>
                 </button>
             </div>
-            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()">הבא</button></div>
+            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()" type="button">הבא</button></div>
         </div>
 
         <div class="row" *ngIf="this.step == 3">
@@ -49,16 +55,21 @@
                 <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2"
                     (click)="openDialog(freeActivity)">
                     <div class="row align-items-center">
-                        <div class="col-md-3 col-3">
+                        <div class="col-md-1 col-1">
                             <img class="logoImg rounded-circle" style="width: 50px; height: 50px;"
                                 [src]="url + '/images/' + freeActivity.manager.association.logo_image">
                         </div>
-                        <p class="h5" class="col-md-9 col-9">{{freeActivity.name}}</p>
+                        <p class="col-md-1 col-1"></p>
+                        <p class="col-md-9 col-9 h5">{{freeActivity.name}}</p>
                     </div>
                 </button>
             </div>
             <div *ngIf="freeActivities.length == 0">
-                אין התנדבויות שתואמות להגדרות החיפוש שלך
+                <p>אין התנדבויות שתואמות להגדרות החיפוש שלך</p>
+                <p class="h3">קיבלנו את הפרטים שלך</p>
+                <p class="h2">תודה שבחרת Give Center</p>
+                <br>
+                <div><a mat-raised-button class="mybutton col-12 mt-2" routerLink="/">חזרה לתפריט הראשי</a></div>
             </div>
         </div>
     </div>

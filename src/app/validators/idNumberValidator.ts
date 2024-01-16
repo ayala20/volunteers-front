@@ -18,7 +18,7 @@ export function idNumberValidator(): ValidatorFn {
     }
 
     if (total % 10 != 0 || id.length != 9) {
-      return { underEighteen: true };
+      return { badId: true };
     }
 
     return null;

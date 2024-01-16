@@ -36,7 +36,7 @@
                 <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('required')">
                     מספר זהות <strong>חובה</strong>
                 </mat-error>
-                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('idNumberValidator()')">
+                <mat-error *ngIf="signUpForm.get('idNumberControl')?.hasError('badId')">
                     מספר זהות <strong>לא תקין</strong>
                 </mat-error>
             </mat-form-field>
@@ -66,8 +66,11 @@
                 <mat-error *ngIf="signUpForm.get('dateOfBirthControl')?.hasError('required')">
                     תאריך לידה <strong>חובה</strong>
                 </mat-error>
-                <mat-error *ngIf="isAgeBelow18()">
+                <mat-error *ngIf="signUpForm.get('dateOfBirthControl')?.hasError('underEighteen')">
                     גיל המתנדב חייב להיות <strong>מעל 18 שנים</strong>
+                </mat-error>
+                <mat-error *ngIf="signUpForm.get('dateOfBirthControl')?.hasError('futureDate')">
+                    תאריך עתידי <strong>לא יתכן</strong>
                 </mat-error>
             </mat-form-field>
 

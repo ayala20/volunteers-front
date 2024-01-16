@@ -34,6 +34,7 @@ export class AssociationRegistrationComponent {
     private dialogRef: MatDialogRef<SignUpManagerComponent>
   ) {
     this.registerationForm = this.formBuilder.group({
+      numberControl: new FormControl('', Validators.required),
       nameControl: new FormControl('', [Validators.required]),
       addressControl: new FormControl('', [Validators.required]),
       emailControl: new FormControl('', [
@@ -76,6 +77,7 @@ export class AssociationRegistrationComponent {
     formDataImage.append('image', this.selectedImage, name2);
 
     const newAssociation: IAssociationCreate = {
+      number: this.registerationForm.value.numberControl,
       name: this.registerationForm.value.nameControl,
       address: this.registerationForm.value.addressControl,
       email: this.registerationForm.value.emailControl,

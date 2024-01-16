@@ -22,8 +22,8 @@ export class RequestComponent {
   districts: Array<IDistrict> = [];
   categories: Array<ICategory> = [];
   freeActivities: Array<IFreeActivity> = []
-  districtId: string;
-  categoryId: string;
+  districtId: string = "";
+  categoryId: string = "";
   url: string = environment.url;
 
   constructor(
@@ -38,8 +38,8 @@ export class RequestComponent {
   }
 
   nextStep() {
+    if ((this.districtId == "" && this.step == 1) || (this.categoryId == "" && this.step == 2)) return;
     this.step += 1;
-
     if (this.step == 3) {
       this.FreeActivityService.filterFreeActivitiesByDistrictAndCategory(this.districtId, this.categoryId)
       .subscribe(data => {

@@ -51,7 +51,6 @@ export class SignUpManagerComponent {
   }
 
   signUp() {
-    debugger
     if (!this.signUpForm.valid) return;
     const newManager: IManagerCreate = {
       name: this.signUpForm.value.nameControl,

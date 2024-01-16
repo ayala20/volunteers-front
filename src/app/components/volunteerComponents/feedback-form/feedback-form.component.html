@@ -1,67 +1,28 @@
-<form class="d-flex h-100 flex-column align-items-center text-center">
+<form class="d-flex h-100 flex-column align-items-center text-center" [formGroup]="feedbackForm" (submit)="createFeedback()">
 
     <div class="col-lg-4 col-12 px-4 pb-4">
 
-        <p class="h2 col-12 mb-3 mt-5 font-weight-bold"><strong>שלום {{fullName}}</strong></p>
+        <div class="d-flex justify-content-center flex-column align-items-center">
+            <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                <img class="logoImg rounded-circle " src="../../../assets/logo.png">
+            </div>
+        </div>
+
+        <p class="h2 col-12 my-3 font-weight-bold"><strong>שלום {{fullName}}</strong></p>
 
         <p class="h3">נשמח לדעת על מידת חווית ההתנדבות שלך:</p>
 
-        <!-- <div class="row" *ngIf="this.step == 1">
-            <p class="h4 col-12 mb-3">היכן תרצה להתנדב היום?</p>
-            <div *ngFor="let district of districts" class="col-md-6 col-6">
-                <button mat-raised-button [class]="district.district_id == districtId ? 'choos' : 'nchoos' "
-                    type="button" class="buttonDistrict col-12 w-100 py-5 my-2"
-                    (click)="choosDistrict(district.district_id)">
-                    <p class="h5">מחוז</p>
-                    <p class="h5">{{district.district_name}}</p>
-                </button>
-            </div>
-            <div [ngClass]="districts.length % 2 == 0 ? 'col-md-12 col-12' : 'col-md-6 col-6'">
-                <button mat-raised-button [class]="districtId == '1' ? 'choos' : 'nchoos' " type="button"
-                    class="buttonDistrict col-12 w-100 py-5 my-2" (click)="choosDistrict('1')">
-                    <p class="h5">לא משנה לי איזה מחוז</p>
-                </button>
-            </div>
-            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()">הבא</button></div>
-        </div> -->
+        <ngb-rating class="mt-4" [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
 
-        <!-- <div class="row" *ngIf="this.step == 2">
-            <p class="h4 col-12 mb-3">באיזה תחום תרצה להתנדב?</p>
-            <div *ngFor="let category of categories" class="col-md-6 col-6">
-                <button mat-raised-button type="button"
-                    [class]="category.category_id == categoryId ? 'choos' : 'nchoos' "
-                    class="buttonDistrict col-12 w-100 py-5 my-2" (click)="choosCategory(category.category_id)">
-                    <p class="h5">{{category.category_name}}</p>
-                </button>
-            </div>
-            <div [class]="categories.length % 2 == 0 ? 'col-md-12 col-12' : 'col-md-6 col-6'">
-                <button mat-raised-button type="button" [class]="categoryId == '1' ? 'choos' : 'nchoos' "
-                    class="buttonDistrict col-12 w-100 py-5 my-2" (click)="choosCategory('1')">
-                    <p class="h5">לא משנה לי איזה תחום</p>
-                </button>
-            </div>
-            <div><button mat-raised-button class="mybutton col-12 mt-2" (click)="nextStep()">הבא</button></div>
-        </div> -->
+        <mat-form-field appearance="outline" class="col-md-12 col-12 mt-4">
+            <mat-label>הערות</mat-label>
+            <textarea matInput formControlName="noteControl"></textarea>
+            <mat-error *ngIf="feedbackForm.get('noteControl')?.hasError('required')">
+                הערה <strong>חובה</strong>
+            </mat-error>
+        </mat-form-field>
 
-        <!-- <div class="row" *ngIf="this.step == 3">
-            <div *ngIf="freeActivities.length != 0" class="h4">
-                אלו כל ההתנדבויות שעלו בחיפוש שלך
-            </div>
-            <div *ngFor="let freeActivity of freeActivities" class="col-md-12 col-12">
-                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2"
-                    (click)="openDialog(freeActivity)">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 col-3">
-                            <img class="logoImg rounded-circle" style="width: 50px; height: 50px;"
-                                [src]="url + '/images/' + freeActivity.manager.association.logo_image">
-                        </div>
-                        <p class="h5" class="col-md-9 col-9">{{freeActivity.name}}</p>
-                    </div>
-                </button>
-            </div>
-            <div *ngIf="freeActivities.length == 0">
-                אין התנדבויות שתואמות להגדרות החיפוש שלך
-            </div>
-        </div> -->
+        <div><button mat-raised-button class="mybutton col-12 mt-2">שלח משוב</button></div>
+
     </div>
 </form>

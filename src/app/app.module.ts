@@ -45,6 +45,7 @@ import { MatTableModule } from '@angular/material/table';
 import { EditFreeActivityFormComponent } from './components/volunteerComponents/edit-free-activity-form/edit-free-activity-form.component';
 import { FeedbackFormComponent } from './components/volunteerComponents/feedback-form/feedback-form.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatTableModule,
     MatSnackBarModule,
+    NgbRatingModule,
   ],
   providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent],

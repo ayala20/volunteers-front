@@ -41,3 +41,7 @@ $red-color: #40e0d0;
 .myTitleModel {
     background-color: rgba($color: $red-color, $alpha: 0.8);
 }
+
+.myTitel {
+    background-color: $red-color; 
+}

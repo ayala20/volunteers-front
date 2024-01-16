@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { IVolunteer, IVolunteerCreate } from 'src/app/models/volunteer.interface';
 import { VolunteerService } from 'src/app/services/volunteer.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
-import { dateOfBirthValidator } from 'src/app/validators/dateOfBirthValidator';
+import { dateOfBirthFuturValidator, dateOfBirthValidator } from 'src/app/validators/dateOfBirthValidator';
 import { idNumberValidator } from 'src/app/validators/idNumberValidator';
 
 @Component({
@@ -36,6 +36,7 @@ export class SignUpVolunteerComponent {
       dateOfBirthControl: new FormControl('', [
         Validators.required,
         dateOfBirthValidator(),
+        dateOfBirthFuturValidator(),
       ]),
       idNumberControl: new FormControl('', [
         Validators.required,
@@ -69,11 +70,4 @@ export class SignUpVolunteerComponent {
     });
   }
 
-  isAgeBelow18(): boolean {
-    const dateOfBirth = this.signUpForm.get('dateOfBirthControl')?.value;
-    const today = new Date();
-    const birthDate = new Date(dateOfBirth);
-    const age = today.getFullYear() - birthDate.getFullYear();
-    return age < 18;
-  }
 }

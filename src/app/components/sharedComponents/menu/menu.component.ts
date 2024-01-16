@@ -45,7 +45,7 @@ export class MenuComponent {
           rout: '/freeActivitiesStatuses',
         },
         {
-          name: 'התנדבבויות נוכחיות',
+          name: 'התנדבויות נוכחיות',
           rout: '/freeActivitiesCurrent',
         },
         {
@@ -64,11 +64,11 @@ export class MenuComponent {
           rout: '/newAssociationsForApproval',
         },
         {
-          name: 'סטטוסים',
+          name: 'סטטוס עמותות',
           rout: '/statuses',
         },
         {
-          name: 'דוח עמותה מסוימת',
+          name: 'סטטוס ההתנדבויות',
           rout: '/reportsOfAssociations',
         },
         {
