@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { IFreeActivity } from 'src/app/models/freeActivity.interface';
 import { FreeActivityWithvolunteerDetailsComponent } from '../free-activity-withvolunteer-details/free-activity-withvolunteer-details.component';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-volunteers-for-approval',

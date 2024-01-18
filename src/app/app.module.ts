@@ -12,7 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignUpVolunteerComponent } from './components/registrationComponents/sign-up-volunteer/sign-up-volunteer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -46,6 +46,8 @@ import { EditFreeActivityFormComponent } from './components/volunteerComponents/
 import { FeedbackFormComponent } from './components/volunteerComponents/feedback-form/feedback-form.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { SpinnerInterceptor } from './spinner.interceptor';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -96,8 +98,13 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     MatTableModule,
     MatSnackBarModule,
     NgbRatingModule,
+    MatProgressBarModule
   ],
-  providers: [AuthGuard, DatePipe],
+  providers: [AuthGuard, DatePipe, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: SpinnerInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

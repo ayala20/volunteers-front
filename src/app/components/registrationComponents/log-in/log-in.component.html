@@ -20,11 +20,25 @@
                 </div>
             </div>
 
-            <mat-form-field [color]="color" appearance="fill" class="col-12">
-                <mat-label>{{ emailOrIdNumber }}</mat-label>
+            <mat-form-field [color]="color" appearance="fill" class="col-12" *ngIf="signUser == 'v'">
+                <mat-label>מספר זהות</mat-label>
                 <input matInput formControlName="idNumberControl">
                 <mat-error *ngIf="signInForm.get('idNumberControl')?.hasError('required')">
-                    {{ emailOrIdNumber }} <strong>חובה</strong>
+                    מספר זהות <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signInForm.get('idNumberControl')?.hasError('badId')">
+                    מספר זהות <strong>לא תקין</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field [color]="color" appearance="fill" class="col-12" *ngIf="signUser == 'm'">
+                <mat-label>דוא"ל</mat-label>
+                <input matInput formControlName="emailControl">
+                <mat-error *ngIf="signInForm.get('emailControl')?.hasError('required')">
+                    דוא"ל <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="signInForm.get('emailControl')?.hasError('email')">
+                    דוא"ל <strong>לא תקין</strong>
                 </mat-error>
             </mat-form-field>
 

@@ -19,43 +19,45 @@
                 </div>
             </div>
 
-            <div *ngIf="freeActivities.length > 0" class="w-100 h6">
-                <div class="row border text-light py-1 myTitel">
-                    <div class="myCol-8"></div>
-                    <div class="myCol-36">
-                        <strong>
-                            קטגוריה
-                        </strong>
+            <div>
+                <div *ngIf="dataSource.length > 0 && !spinnerService.isVisible()" class="w-100 h6">
+                    <div class="row border text-light py-1 myTitel">
+                        <div class="myCol-8"></div>
+                        <div class="myCol-36">
+                            <strong>
+                                קטגוריה
+                            </strong>
+                        </div>
+                        <div class="myCol-36">
+                            <strong>
+                                עמותה
+                            </strong>
+                        </div>
+                        <div class="myCol-20">
+                            <strong>
+                                סטטוס
+                            </strong>
+                        </div>
                     </div>
-                    <div class="myCol-36">
-                        <strong>
-                            עמותה
-                        </strong>
-                    </div>
-                    <div class="myCol-20">
-                        <strong>
-                            סטטוס
-                        </strong>
+                    <div *ngFor="let row of dataSource" class="row border">
+                        <button class="myBtn p-0 m-0 myCol-8 py-3" type="button" (click)="onOpenDetails(row)">
+                            <mat-icon class="icon" fontIcon="more_vert"></mat-icon>
+                        </button>
+                        <div class="myCol-36 py-3">
+                            {{ row.category.category_name }}
+                        </div>
+                        <div class="myCol-36 py-3">
+                            {{ row.manager.association.name }}
+                        </div>
+                        <div class="myCol-20 py-3" *ngIf="row.status == 'TAKEN'">
+                            <mat-icon class="icon" fontIcon="timer"></mat-icon>
+                        </div>
+                        <div class="myCol-20 py-3" *ngIf="row.status == 'DONE'">
+                            <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                        </div>
                     </div>
                 </div>
-
-                <div *ngFor="let row of dataSource" class="row border">
-                    <button class="myBtn p-0 m-0 myCol-8 py-3" type="button" (click)="onOpenDetails(row)">
-                        <mat-icon class="icon" fontIcon="more_vert"></mat-icon>
-                    </button>
-                    <div class="myCol-36 py-3">
-                        {{ row.category.category_name }}
-                    </div>
-                    <div class="myCol-36 py-3">
-                        {{ row.manager.association.name }}
-                    </div>
-                    <div class="myCol-20 py-3" *ngIf="row.status == 'TAKEN'">
-                        <mat-icon class="icon" fontIcon="timer"></mat-icon>
-                    </div>
-                    <div class="myCol-20 py-3" *ngIf="row.status == 'DONE'">
-                        <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
-                    </div>
-                </div>
+                <a mat-raised-button class="mybutton col-12 mt-2 w-100" routerLink="/">חזרה לתפריט הראשי</a>
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ import { FreeActivityService } from 'src/app/services/free-activity.service';
 import { getFromLocalStorage } from 'src/app/shared/storageUtils';
 import { FreeActivityDetailsComponent } from '../free-activity-details/free-activity-details.component';
 import { environment } from 'src/environment/environment';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-request',
@@ -30,6 +31,7 @@ export class RequestComponent {
     private route: ActivatedRoute,
     private FreeActivityService: FreeActivityService,
     public dialog: MatDialog,
+    public spinnerService: SpinnerService,
   ) {
     this.fullName = getFromLocalStorage('user').full_name;
     this.step = 1;

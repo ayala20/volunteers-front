@@ -8,10 +8,14 @@
             </div>
             <p class="h4 col-12 mb-3">בקשות התנדבות לאישור</p>
             <div *ngFor="let freeActivitie of freeActivities" class="col-md-12 col-12">
-                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2" (click)="openDialog(freeActivitie)">
+                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2"
+                    (click)="openDialog(freeActivitie)">
                     <p class="h6"><strong>תחום ההתנדבות:</strong> {{freeActivitie.category.category_name}}</p>
                     <p class="h6"><strong>שם המתנדב:</strong> {{freeActivitie.volunteer?.full_name}}</p>
                 </button>
+            </div>
+            <div>
+                <a mat-raised-button class="mybutton col-12 mt-2" routerLink="/">חזרה לתפריט הראשי</a>
             </div>
         </div>
     </div>

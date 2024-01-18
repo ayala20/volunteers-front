@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { IFreeActivity } from 'src/app/models/freeActivity.interface';
 import { EditFreeActivityFormComponent } from '../edit-free-activity-form/edit-free-activity-form.component';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 export interface PeriodicElement {
   category: string;
@@ -22,7 +23,7 @@ export class MyFreeActivityDetailsComponent {
   freeActivities: Array<any> = []
   dataSource: any[] = [];
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, public spinnerService: SpinnerService) {
     this.freeActivities = this.route.snapshot.data['freeActivities'];
     this.dataSource = this.freeActivities
   }

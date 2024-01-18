@@ -23,6 +23,7 @@ import { FreeActivitiesStatusesComponent } from './components/responsibleCompone
 import { VolunteerFeedbackComponent } from './components/responsibleComponents/volunteer-feedback/volunteer-feedback.component';
 import { MyFreeActivityDetailsComponent } from './components/volunteerComponents/my-free-activity-details/my-free-activity-details.component';
 import { FeedbackFormComponent } from './components/volunteerComponents/feedback-form/feedback-form.component';
+import { FeedbackService } from './services/feedback.service';
 
 const routes: Routes = [
   { path: '', component: MenuComponent, canActivate: [AuthGuard] },
@@ -53,7 +54,11 @@ const routes: Routes = [
       freeActivities: FreeActivityService,
     },
   },
-  { path: 'feedbackHistories', component: FeedbackHistoriesComponent },
+  {
+    path: 'feedbackHistories', component: FeedbackHistoriesComponent, resolve: {
+      feedbacks: FeedbackService,
+    },
+  },
   {
     path: 'newAssociationsForApproval',
     component: NewAssociationsComponent,
@@ -96,7 +101,11 @@ const routes: Routes = [
       freeActivities: FreeActivityService,
     },
   },
-  { path: 'volunteerFeedback', component: VolunteerFeedbackComponent },
+  {
+    path: 'volunteerFeedback', component: VolunteerFeedbackComponent, resolve: {
+      feedbacks: FeedbackService,
+    },
+  },
   { path: 'feedbackForm', component: FeedbackFormComponent }
 ];
 
