@@ -20,6 +20,11 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
     return this._http.get<Array<IFreeActivity>>(url);
   }
 
+  findAllRequestByAssociation(associationId: string): Observable<Array<IFreeActivity>> {
+    let url = `${this.apiUrl}/free-activity/findAllRequestByAssociation/${associationId}`;
+    return this._http.get<Array<IFreeActivity>>(url);
+  }
+
   findAllRequestByManagerAndStatus(managerId: string, statuses: string[]): Observable<Array<IFreeActivity>> {
     let url = `${this.apiUrl}/free-activity/findAllRequestByManagerAndStatus/${managerId}/${statuses}`;
     return this._http.get<Array<IFreeActivity>>(url);

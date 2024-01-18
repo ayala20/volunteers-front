@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { IAssociation } from 'src/app/models/association.interface';
+import { FreeActivitiesInAssociationComponent } from '../free-activities-in-association/free-activities-in-association.component';
 
 @Component({
   selector: 'app-statuses',
@@ -16,10 +17,11 @@ export class StatusesComponent {
   }
 
   openDialog(association: IAssociation) {
-    // this.dialog.open(AssociationDetailsComponent, {
-    //   data: {
-    //     association
-    //   },
-    // });
+    this.dialog.open(FreeActivitiesInAssociationComponent, {
+      data: {
+        association
+      },
+      width: '100%',
+    });
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IAssociation } from 'src/app/models/association.interface';
 import { AssociationDetailsComponent } from '../association-details/association-details.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-new-associations',
@@ -12,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class NewAssociationsComponent {
   associations: Array<IAssociation> = [];
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, public spinnerService: SpinnerService) {
     this.associations = this.route.snapshot.data['associations'];
   }
 

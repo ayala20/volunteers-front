@@ -14,7 +14,7 @@ export class VolunteersForApprovalComponent {
 
   freeActivities: Array<IFreeActivity> = []
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, public spinnerService: SpinnerService) {
     this.freeActivities = this.route.snapshot.data['freeActivities'];
     console.log(this.freeActivities);
   }

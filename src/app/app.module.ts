@@ -48,6 +48,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpinnerInterceptor } from './spinner.interceptor';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FreeActivitiesInAssociationComponent } from './components/managerComponents/free-activities-in-association/free-activities-in-association.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MyFreeActivityDetailsComponent,
     EditFreeActivityFormComponent,
     FeedbackFormComponent,
+    FreeActivitiesInAssociationComponent,
   ],
   imports: [
     BrowserModule,

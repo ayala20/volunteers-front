@@ -1,0 +1,72 @@
+<div class="myTitleModel">
+    <button mat-button mat-dialog-close>✖️</button>
+    <p class="h3 col-12 mb-3 text-center pb-2">סטטוס התנדבויות בעמותת {{ data.association.name }}</p>
+</div>
+<mat-dialog-content class="mat-typography px-0 m-0">
+    <div class="d-flex h-100 flex-column align-items-center text-center">
+
+        <div class="col-md-10 col-12">
+            
+            <div class="row m-0">
+
+                <div *ngIf="freeActivities.length > 0" class="w-100 bg-light h6">
+                    <div class="row border text-light myTitel py-1">
+                        <div class="myCol-22">
+                            <strong>
+                                קטגוריה
+                            </strong>
+                        </div>
+                        <div class="myCol-22">
+                            <strong>
+                                שם ההתנדבות
+                            </strong>
+                        </div>
+                        <div class="myCol-22">
+                            <strong>
+                                שם האחראי
+                            </strong>
+                        </div>
+                        <div class="myCol-22">
+                            <strong>
+                                שם מתנדב
+                            </strong>
+                        </div>
+                        <div class="myCol-12">
+                            <strong>
+                                מצב
+                            </strong>
+                        </div>
+                    </div>
+    
+                    <div *ngFor="let row of dataSource" class="row border">
+                        <div class="myCol-22 py-3">
+                            {{ row.category.category_name }}
+                        </div>
+                        <div class="myCol-22 py-3">
+                            {{ row.name }}
+                        </div>
+                        <div class="myCol-22 py-3">
+                            {{ row.manager.name }}
+                        </div>
+                        <div class="myCol-22 py-3">
+                            {{ row.volunteer.full_name }}
+                        </div>
+                        <div class="myCol-12 py-3" *ngIf="row.status == 'TAKEN'">
+                            <mat-icon class="icon" fontIcon="timer"></mat-icon>
+                        </div>
+                        <div class="myCol-12 py-3" *ngIf="row.status == 'DONE'">
+                            <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                        </div>
+                        <div class="myCol-12 py-3" *ngIf="row.status == 'WAITING'">
+                            <mat-icon class="icon" fontIcon="fiber_new"></mat-icon>
+                        </div>
+                        <div class="myCol-12 py-3" *ngIf="row.status == 'REQUEST'">
+                            <mat-icon class="icon" fontIcon="contact_support"></mat-icon>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="freeActivities.length == 0">אין התנדבויות</div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
