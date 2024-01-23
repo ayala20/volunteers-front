@@ -20,17 +20,17 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
     return this._http.get<Array<IFreeActivity>>(url);
   }
 
-  findAllRequestByAssociation(associationId: string): Observable<Array<IFreeActivity>> {
+  findAllFreeActivityByAssociation(associationId: string): Observable<Array<IFreeActivity>> {
     let url = `${this.apiUrl}/free-activity/findAllRequestByAssociation/${associationId}`;
     return this._http.get<Array<IFreeActivity>>(url);
   }
 
-  findAllRequestByManagerAndStatus(managerId: string, statuses: string[]): Observable<Array<IFreeActivity>> {
+  findAllFreeActivityByManagerAndStatus(managerId: string, statuses: string[]): Observable<Array<IFreeActivity>> {
     let url = `${this.apiUrl}/free-activity/findAllRequestByManagerAndStatus/${managerId}/${statuses}`;
     return this._http.get<Array<IFreeActivity>>(url);
   }
 
-  findAllRequestByVolunteerAndStatus(volunteerId: string, statuses: string[]): Observable<Array<IFreeActivity>> {
+  findAllFreeActivityByVolunteerAndStatus(volunteerId: string, statuses: string[]): Observable<Array<IFreeActivity>> {
     let url = `${this.apiUrl}/free-activity/findAllRequestByVolunteerAndStatus/${volunteerId}/${statuses}`;
     return this._http.get<Array<IFreeActivity>>(url);
   }
@@ -53,23 +53,23 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
   resolve(route: ActivatedRouteSnapshot): Observable<Array<IFreeActivity>> {
     if (route.routeConfig?.path == 'volunteersForApproval') {
       const managerId = getFromLocalStorage("user").id
-      return this.findAllRequestByManagerAndStatus(managerId, ['REQUEST']);
+      return this.findAllFreeActivityByManagerAndStatus(managerId, ['REQUEST']);
     }
     if (route.routeConfig?.path == 'myFreeActivityDetails') {
       const volunteerId = getFromLocalStorage("user").id
-      return this.findAllRequestByVolunteerAndStatus(volunteerId, ['TAKEN', 'DONE']);
+      return this.findAllFreeActivityByVolunteerAndStatus(volunteerId, ['TAKEN', 'DONE']);
     }
     if (route.routeConfig?.path == 'freeActivitiesStatuses') {
       const managerId = getFromLocalStorage("user").id
-      return this.findAllRequestByManagerAndStatus(managerId, ['TAKEN', 'DONE']);
+      return this.findAllFreeActivityByManagerAndStatus(managerId, ['TAKEN', 'DONE']);
     }
     if (route.routeConfig?.path == 'freeActivitiesCurrent') {
       const managerId = getFromLocalStorage("user").id
-      return this.findAllRequestByManagerAndStatus(managerId, ['TAKEN']);
+      return this.findAllFreeActivityByManagerAndStatus(managerId, ['TAKEN']);
     }
     if (route.routeConfig?.path == 'freeActivitiesCompleted') {
       const managerId = getFromLocalStorage("user").id
-      return this.findAllRequestByManagerAndStatus(managerId, ['DONE']);
+      return this.findAllFreeActivityByManagerAndStatus(managerId, ['DONE']);
     }
     return this.getFreeActivities();
   }

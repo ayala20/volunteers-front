@@ -68,10 +68,6 @@ export class MenuComponent {
           rout: '/statuses',
         },
         {
-          name: 'סטטוס ההתנדבויות',
-          rout: '/reportsOfAssociations',
-        },
-        {
           name: 'דוח מתנדב מסוים',
           rout: '/reportsOfVolunteers',
         },

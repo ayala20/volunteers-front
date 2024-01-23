@@ -33,7 +33,6 @@ import { VolunteersForApprovalComponent } from './components/responsibleComponen
 import { FreeActivityDetailsComponent } from './components/volunteerComponents/free-activity-details/free-activity-details.component';
 import { DatePipe } from '@angular/common';
 import { FreeActivityWithvolunteerDetailsComponent } from './components/responsibleComponents/free-activity-withvolunteer-details/free-activity-withvolunteer-details.component';
-import { ReportsOfAssociationsComponent } from './components/managerComponents/reports-of-associations/reports-of-associations.component';
 import { ReportsOfVolunteersComponent } from './components/managerComponents/reports-of-volunteers/reports-of-volunteers.component';
 import { ReadingFeedbackComponent } from './components/managerComponents/reading-feedback/reading-feedback.component';
 import { FreeActivitiesStatusesComponent } from './components/responsibleComponents/free-activities-statuses/free-activities-statuses.component';
@@ -49,6 +48,7 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpinnerInterceptor } from './spinner.interceptor';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FreeActivitiesInAssociationComponent } from './components/managerComponents/free-activities-in-association/free-activities-in-association.component';
+import { VolunteerDetailsComponent } from './components/managerComponents/volunteer-details/volunteer-details.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,6 @@ import { FreeActivitiesInAssociationComponent } from './components/managerCompon
     VolunteersForApprovalComponent,
     FreeActivityDetailsComponent,
     FreeActivityWithvolunteerDetailsComponent,
-    ReportsOfAssociationsComponent,
     ReportsOfVolunteersComponent,
     ReadingFeedbackComponent,
     FreeActivitiesStatusesComponent,
@@ -79,6 +78,7 @@ import { FreeActivitiesInAssociationComponent } from './components/managerCompon
     EditFreeActivityFormComponent,
     FeedbackFormComponent,
     FreeActivitiesInAssociationComponent,
+    VolunteerDetailsComponent,
   ],
   imports: [
     BrowserModule,

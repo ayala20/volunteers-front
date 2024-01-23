@@ -25,10 +25,11 @@ export class FreeActivitiesInAssociationComponent {
   }
 
   findAllRequestByManagerAndStatus() {
-    this.freeActivityService.findAllRequestByAssociation(this.data.association.id!)
+    this.freeActivityService.findAllFreeActivityByAssociation(this.data.association.id!)
     .subscribe(data => {
       this.freeActivities = data
       this.dataSource = this.freeActivities
+      debugger;
     })
   }
 }

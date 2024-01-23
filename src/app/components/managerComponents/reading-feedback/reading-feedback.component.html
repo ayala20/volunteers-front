@@ -1,1 +1,33 @@
-<p>reading-feedback works!</p>
+<div class="d-flex h-100 flex-column align-items-center text-center">
+
+    <div class="col-lg-4 col-10 px-4 pb-4">
+
+        <div class="row">
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                    <img class="logoImg rounded-circle " src="../../../assets/logo.png">
+                </div>
+            </div>
+
+            <p class="h2 col-12 mb-3">קריאת משובי מתנדבים:</p>
+
+            <div class="card text-center p-0 mt-2" *ngFor="let feedback of feedbacks">
+                <div class="card-header">
+                    {{feedback.volunteerData.full_name}}
+                </div>
+                <div class="card-body">
+                    <p class="card-text my-0"><strong>תאריך המשוב: </strong>{{convertISODateToRegularFormat(feedback.date)}}</p>
+                    <p class="card-text my-0"><strong>הערה במשוב: </strong>{{feedback.note}}</p>
+                    <p class="card-text my-0"><strong>עבור התנדבות: </strong>{{feedback.freeActivityData.name}}</p>
+
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="true"></ngb-rating>
+                </div>
+            </div>
+
+            <a mat-raised-button class="mybutton col-12 mt-2" routerLink="/">חזרה לתפריט הראשי</a>
+
+        </div>
+    </div>
+</div>

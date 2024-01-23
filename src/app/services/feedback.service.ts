@@ -26,13 +26,23 @@ export class FeedbackService implements Resolve<Array<IFeedBack>> {
     return this._http.get<Array<any>>(url);
   }
 
+  getFeedbackByManagerId(): Observable<Array<any>> {
+    const managerId = getFromLocalStorage("user").id
+    debugger;
+    let url = `${this.apiUrl}/FeedBack/getFeedbackByManagerId/${managerId}`;
+    return this._http.get<Array<any>>(url);
+  }
+
   createFeedBack(feedback: IFeedBackCreate) {
     let url = `${this.apiUrl}/FeedBack`;
     return this._http.post<Array<IFeedBack>>(url, feedback);
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Array<IFeedBack>> {
-    if (route.routeConfig?.path == 'volunteerFeedback') {
+    if (route.routeConfig?.path == 'volunteerFeedback') { // for responsible
+      return this.getFeedbackByManagerId();
+    }
+    if (route.routeConfig?.path == 'readingFeedback') { // for manager
       return this.getFeedBacks();
     }
     return this.getFeedbackByVolunteerId();

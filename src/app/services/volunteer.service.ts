@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
 import { IVolunteer, IVolunteerCreate } from '../models/volunteer.interface';
 import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class VolunteerService {
+export class VolunteerService implements Resolve<Array<IVolunteer>> {
   apiUrl: string = environment.apiUrl;
 
   constructor(private _http: HttpClient) {}
@@ -26,4 +27,9 @@ export class VolunteerService {
     let url = `${this.apiUrl}/volunteer/signIn/${idNumber}/${passsword}`;
     return this._http.get<IVolunteer>(url);
   }
+
+  resolve(route: ActivatedRouteSnapshot): Observable<Array<IVolunteer>> {
+    return this.getVolunteers();
+  }
+
 }

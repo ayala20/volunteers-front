@@ -22,6 +22,7 @@ import { DistrictService } from 'src/app/services/district.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { FreeActivityService } from 'src/app/services/free-activity.service';
 import { IFreeActivity, IFreeActivityCreate } from 'src/app/models/freeActivity.interface';
+import { dateNotPast } from 'src/app/validators/dateNotPast';
 
 @Component({
   selector: 'app-adding-volunteering',
@@ -53,7 +54,7 @@ export class AddingVolunteeringComponent {
       districtControl: new FormControl('', [Validators.required]),
       categoryControl: new FormControl('', [Validators.required]),
       addressControl: new FormControl('', [Validators.required]),
-      dateAndTimeControl: new FormControl('', [Validators.required]),
+      dateAndTimeControl: new FormControl('', [Validators.required, dateNotPast()]),
       descriptionControl: new FormControl(''),
     });
   }

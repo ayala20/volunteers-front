@@ -1,4 +1,19 @@
 <div class="spinner-container fixed-top" *ngIf="spinnerService.isVisible()">
-    <mat-progress-bar mode="buffer" class="my-2"></mat-progress-bar>
+    <!-- <mat-progress-bar mode="buffer" class="my-2"></mat-progress-bar> -->
+    <mat-progress-bar mode="indeterminate" class="my-2"></mat-progress-bar>
 </div>
-<router-outlet></router-outlet>
+
+<div class="fixed-bottom bg-light row pb-3 px-3 pt-1" *ngIf="userId != null">
+    <div class="col-6 col-lg-2">
+        <button type="button" class="mybutton btn" routerLink="/">חזרה לתפריט הראשי</button>
+    </div>
+    <div class="col-2 col-lg-8">
+    </div>
+    <div class="text-start col-4 col-lg-2">
+        <button type="button" class="mybutton btn" routerLink="/logIn" (click)="logOut()">יציאה</button>
+    </div>
+</div>
+
+<div class="pb-5">
+    <router-outlet></router-outlet>
+</div>

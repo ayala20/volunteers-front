@@ -56,6 +56,9 @@
                     <mat-error *ngIf="freeActivityForm.get('dateAndTimeControl')?.hasError('required')">
                         תאריך ושעה <strong>חובה</strong>
                     </mat-error>
+                    <mat-error *ngIf="freeActivityForm.get('dateAndTimeControl')?.hasError('past')">
+                        תאריך כבר <strong>עבר</strong>
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="col-md-12 col-12">

@@ -14,11 +14,7 @@ export class VolunteerFeedbackComponent {
     private route: ActivatedRoute,
     private datePipe: DatePipe
   ) {
-    debugger
     this.feedbacks = this.route.snapshot.data['feedbacks'];
-    debugger
-    console.log(this.feedbacks);
-
   }
 
   convertISODateToRegularFormat(isoDate: any) {

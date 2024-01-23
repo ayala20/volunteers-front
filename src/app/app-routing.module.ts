@@ -14,7 +14,6 @@ import { NewAssociationsComponent } from './components/managerComponents/new-ass
 import { VolunteersForApprovalComponent } from './components/responsibleComponents/volunteers-for-approval/volunteers-for-approval.component';
 import { FreeActivityService } from './services/free-activity.service';
 import { StatusesComponent } from './components/managerComponents/statuses/statuses.component';
-import { ReportsOfAssociationsComponent } from './components/managerComponents/reports-of-associations/reports-of-associations.component';
 import { ReportsOfVolunteersComponent } from './components/managerComponents/reports-of-volunteers/reports-of-volunteers.component';
 import { ReadingFeedbackComponent } from './components/managerComponents/reading-feedback/reading-feedback.component';
 import { FreeActivitiesCompletedComponent } from './components/responsibleComponents/free-activities-completed/free-activities-completed.component';
@@ -24,6 +23,7 @@ import { VolunteerFeedbackComponent } from './components/responsibleComponents/v
 import { MyFreeActivityDetailsComponent } from './components/volunteerComponents/my-free-activity-details/my-free-activity-details.component';
 import { FeedbackFormComponent } from './components/volunteerComponents/feedback-form/feedback-form.component';
 import { FeedbackService } from './services/feedback.service';
+import { VolunteerService } from './services/volunteer.service';
 
 const routes: Routes = [
   { path: '', component: MenuComponent, canActivate: [AuthGuard] },
@@ -79,12 +79,15 @@ const routes: Routes = [
     },
   },
   {
-    path: 'reportsOfAssociations', component: ReportsOfAssociationsComponent, resolve: {
-      associations: AssociationService,
+    path: 'reportsOfVolunteers', component: ReportsOfVolunteersComponent, resolve: {
+      volunteers: VolunteerService
+    }
+  },
+  {
+    path: 'readingFeedback', component: ReadingFeedbackComponent, resolve: {
+      feedbacks: FeedbackService,
     },
   },
-  { path: 'reportsOfVolunteers', component: ReportsOfVolunteersComponent },
-  { path: 'readingFeedback', component: ReadingFeedbackComponent },
   {
     path: 'freeActivitiesCompleted', component: FreeActivitiesCompletedComponent, resolve: {
       freeActivities: FreeActivityService,

@@ -19,7 +19,6 @@
                     <p class="card-text my-0"><strong>תאריך המשוב: </strong>{{convertISODateToRegularFormat(feedback.date)}}</p>
                     <p class="card-text my-0"><strong>הערה במשוב: </strong>{{feedback.note}}</p>
                     <p class="card-text my-0"><strong>עבור התנדבות: </strong>{{feedback.freeActivityData.name}}</p>
-
                 </div>
                 <div class="card-footer text-body-secondary">
                     <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="true"></ngb-rating>
