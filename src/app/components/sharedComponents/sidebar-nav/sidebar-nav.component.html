@@ -1,0 +1,39 @@
+<div id="wrapper" [ngClass]="myClass">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" *ngIf="userService.isUserConnect">
+        <ul class="sidebar-nav">
+            <li>
+                <a mat-button routerLink="/menu" matTooltip="תפריט" matTooltipPosition="left" matTooltipHideDelay="100"
+                    matTooltipShowDelay="1000" class="p-5 flex-column d-flex">
+                    <i class="bi bi-house-fill" style="font-size: 3em;"></i>
+                </a>
+            </li>
+            <li><a mat-button routerLink="/logIn" matTooltip="התנתקות" matTooltipPosition="left"
+                    matTooltipHideDelay="100" matTooltipShowDelay="1000" (click)="logOut()"
+                    class="p-5 flex-column d-flex">
+                    <i class="bi bi-box-arrow-right ps-2" style="font-size: 3em;"></i>
+                </a>
+            </li>
+            <li><a mat-button routerLink="/menu" matTooltip="משתמש" matTooltipPosition="left" matTooltipHideDelay="100"
+                    matTooltipShowDelay="1000" (click)="onClick()" class="p-5 flex-column d-flex">
+                    <i class="bi bi-person-gear" style="font-size: 3em;"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a class="btn border pb-0" (click)="onClick()" id="menu-toggle"
+                        [matTooltip]="myClass == '' ? 'open menu' : 'close menu'" matTooltipHideDelay="100"
+                        matTooltipShowDelay="1000" *ngIf="userService.isUserConnect"><mat-icon>menu</mat-icon></a>
+                    <ng-content></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

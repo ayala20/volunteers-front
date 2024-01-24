@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-            <p class="h2 col-12 mb-3">היסטויית משובים שלי:</p>
+            <p class="h2 col-12 mb-3">היסטויית משובים שלי</p>
 
             <div class="card text-center p-0 mt-2" *ngFor="let feedback of feedbacks">
                 <div class="card-header">
@@ -23,9 +23,7 @@
                     <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="true"></ngb-rating>
                 </div>
             </div>
-
-            <a mat-raised-button class="mybutton col-12 mt-2" routerLink="/">חזרה לתפריט הראשי</a>
-
+            <div class="h5" *ngIf="feedbacks.length == 0 && !spinnerService.isVisible()">אין לך התנדבויות</div>
         </div>
     </div>
 </div>

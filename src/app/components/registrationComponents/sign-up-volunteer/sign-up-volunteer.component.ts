@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IVolunteer, IVolunteerCreate } from 'src/app/models/volunteer.interface';
+import { UserService } from 'src/app/services/user.service';
 import { VolunteerService } from 'src/app/services/volunteer.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { dateOfBirthFuturValidator, dateOfBirthValidator } from 'src/app/validators/dateOfBirthValidator';
@@ -24,7 +25,8 @@ export class SignUpVolunteerComponent {
   constructor(
     private formBuilder: FormBuilder,
     public volunteerService: VolunteerService,
-    private router: Router
+    private router: Router,
+    public userService: UserService
   ) {
     this.signUpForm = this.formBuilder.group({
       fullNameControl: new FormControl('', [Validators.required]),
@@ -66,6 +68,7 @@ export class SignUpVolunteerComponent {
     };
     this.volunteerService.createVolunteer(newVolunteer).subscribe((data) => {
       saveToLocalStorage('user', data);
+      this.userService.setUserConnect(true)
       this.router.navigate(['/menu']);
     });
   }

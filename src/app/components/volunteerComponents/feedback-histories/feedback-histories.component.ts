@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IFeedBack } from 'src/app/models/feedback.interface';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-feedback-histories',
@@ -14,7 +15,8 @@ export class FeedbackHistoriesComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public spinnerService: SpinnerService
   ) {
     debugger
     this.feedbacks = this.route.snapshot.data['feedbacks'];

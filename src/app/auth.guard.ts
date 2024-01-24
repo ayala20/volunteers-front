@@ -6,10 +6,11 @@ import {
 } from '@angular/router';
 import { Router } from '@angular/router';
 import { getFromLocalStorage } from './shared/storageUtils';
+import { UserService } from './services/user.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, public userService: UserService) {}
 
   canActivate(): Promise<boolean> {
     return new Promise((resolve) => {

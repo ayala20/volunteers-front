@@ -49,6 +49,8 @@ import { SpinnerInterceptor } from './spinner.interceptor';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FreeActivitiesInAssociationComponent } from './components/managerComponents/free-activities-in-association/free-activities-in-association.component';
 import { VolunteerDetailsComponent } from './components/managerComponents/volunteer-details/volunteer-details.component';
+import { SidebarNavComponent } from './components/sharedComponents/sidebar-nav/sidebar-nav.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import { VolunteerDetailsComponent } from './components/managerComponents/volunt
     FeedbackFormComponent,
     FreeActivitiesInAssociationComponent,
     VolunteerDetailsComponent,
+    SidebarNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,8 @@ import { VolunteerDetailsComponent } from './components/managerComponents/volunt
     MatTableModule,
     MatSnackBarModule,
     NgbRatingModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule
   ],
   providers: [AuthGuard, DatePipe, {
     provide: HTTP_INTERCEPTORS,

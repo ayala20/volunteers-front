@@ -12,6 +12,7 @@ import { IManager, IManagerCreate } from 'src/app/models/manager.interface';
 import { ManagerService } from 'src/app/services/manager.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { AssociationRegistrationComponent } from '../association-registration/association-registration.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sign-up-manager',
@@ -28,7 +29,8 @@ export class SignUpManagerComponent {
     public managerService: ManagerService,
     private router: Router,
     private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public userService: UserService
   ) {
     this.associations = this.route.snapshot.data['associations'];
     this.signUpForm = this.formBuilder.group({
@@ -62,6 +64,7 @@ export class SignUpManagerComponent {
     };
     this.managerService.createManager(newManager).subscribe((data: IManager) => {
       saveToLocalStorage('user', data);
+      this.userService.setUserConnect(true)
       this.router.navigate(['/menu']);
     });
   }

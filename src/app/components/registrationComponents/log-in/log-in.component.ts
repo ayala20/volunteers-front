@@ -13,6 +13,7 @@ import { VolunteerService } from 'src/app/services/volunteer.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
 import { idNumberValidator } from 'src/app/validators/idNumberValidator';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-log-in',
@@ -31,6 +32,7 @@ export class LogInComponent {
     public managerService: ManagerService,
     private router: Router,
     public dialog: MatDialog,
+    public userService: UserService
   ) {
     this.signUser = 'v';
     this.signInForm = this.formBuilder.group({
@@ -62,6 +64,7 @@ export class LogInComponent {
         .subscribe(
           (data) => {
             saveToLocalStorage('user', data);
+            this.userService.setUserConnect(true)
             this.router.navigate(['/menu']);
           },
           (error) => {
@@ -76,6 +79,7 @@ export class LogInComponent {
         .subscribe(
           (data) => {
             saveToLocalStorage('user', data);
+            this.userService.setUserConnect(true)
             this.router.navigate(['/menu']);
           },
           (error) => {

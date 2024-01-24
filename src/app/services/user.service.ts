@@ -1,21 +1,39 @@
 import { Injectable } from '@angular/core';
+import { getFromLocalStorage } from '../shared/storageUtils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private spinnerVisible = false;
+  public isUserConnect: boolean;
+  private nameUser: string;
 
-  show(): void {
-    this.spinnerVisible = true;
+  constructor() {
+    let user = getFromLocalStorage("user")
+    let connect = user != null
+    this.setUserConnect(connect)
   }
 
-  hide(): void {
-    this.spinnerVisible = false;
+  setUserConnect(isConnect: boolean): void {
+    debugger
+    this.isUserConnect = isConnect;
+    if (isConnect) {
+      let user = getFromLocalStorage("user")
+      let roleUser = user.roleUser
+      if (roleUser == 1) {
+        this.nameUser = user.full_name
+      } else if (roleUser == 2) {
+        this.nameUser = user.name
+      }
+    }
   }
 
-  isVisible(): boolean {
-    return this.spinnerVisible;
+  // isUserConnect(): boolean {
+  //   return this.userConnect;
+  // }
+
+  getName(): string {
+    return this.nameUser;
   }
 }

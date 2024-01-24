@@ -48,16 +48,19 @@ const routes: Routes = [
       districts: DistrictService,
       categories: CategoryService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'myFreeActivityDetails', component: MyFreeActivityDetailsComponent, resolve: {
       freeActivities: FreeActivityService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'feedbackHistories', component: FeedbackHistoriesComponent, resolve: {
       feedbacks: FeedbackService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'newAssociationsForApproval',
@@ -65,6 +68,7 @@ const routes: Routes = [
     resolve: {
       associations: AssociationService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'volunteersForApproval',
@@ -72,44 +76,52 @@ const routes: Routes = [
     resolve: {
       freeActivities: FreeActivityService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'statuses', component: StatusesComponent, resolve: {
       associations: AssociationService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'reportsOfVolunteers', component: ReportsOfVolunteersComponent, resolve: {
       volunteers: VolunteerService
-    }
+    },
+    canActivate: [AuthGuard]
   },
   {
     path: 'readingFeedback', component: ReadingFeedbackComponent, resolve: {
       feedbacks: FeedbackService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'freeActivitiesCompleted', component: FreeActivitiesCompletedComponent, resolve: {
       freeActivities: FreeActivityService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'freeActivitiesCurrent', component: FreeActivitiesCurrentComponent,
     resolve: {
       freeActivities: FreeActivityService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'freeActivitiesStatuses', component: FreeActivitiesStatusesComponent, resolve: {
       freeActivities: FreeActivityService,
     },
+    canActivate: [AuthGuard]
   },
   {
     path: 'volunteerFeedback', component: VolunteerFeedbackComponent, resolve: {
       feedbacks: FeedbackService,
     },
+    canActivate: [AuthGuard]
   },
-  { path: 'feedbackForm', component: FeedbackFormComponent }
+  { path: 'feedbackForm', component: FeedbackFormComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

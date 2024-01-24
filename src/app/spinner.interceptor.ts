@@ -17,10 +17,8 @@ export class SpinnerInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // הפעלת הספינר לפני שנשלח את הבקשה
     this.spinnerService.show();
     return next.handle(request).pipe(
-      // סיום וכיבוי הספינר לאחר קבלת תשובה
       finalize(() => this.spinnerService.hide())
     );
   }

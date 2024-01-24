@@ -11,11 +11,7 @@ export class AppComponent {
   userId: any = {};
 
   constructor(public spinnerService: SpinnerService) {
-    debugger
-    console.log(this.userId);
     this.userId = getFromLocalStorage("user")
-    console.log(this.userId);
-
   }
 
   logOut() {

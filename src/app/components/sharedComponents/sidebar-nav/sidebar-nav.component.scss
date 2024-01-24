@@ -1,0 +1,69 @@
+@import '../../../app.component.scss';
+
+/* Sidebar */
+#sidebar-wrapper{
+    z-index: 99;
+    position: absolute;
+    width: 0;
+    height:100%;
+    overflow-y: hidden;
+    background: $site-color;
+    opacity: 0.9;
+    transition: all .5s;
+    display: flex;
+    align-items: center;
+}
+
+/* Main Content */
+#page-content-wrapper{
+    width: 100%;	
+    position: absolute;
+    padding: 15px;
+    transition:all .5s;
+}
+
+#menu-toggle{
+    transition: all .3s;
+    font-size: 2em;
+    position: fixed;
+    background: $site-color
+}
+/* Change the width of the sidebar to display it*/
+#wrapper.menuDisplayed #sidebar-wrapper{
+    width: 100px;
+    position: fixed;
+}
+
+#wrapper.menuDisplayed #menu-toggle{
+    margin-right: 0px;
+    z-index: 100;
+    background: white;
+}
+
+/* Sidebar styling */
+.sidebar-nav{
+    padding: 0;
+    list-style: none; 
+    transition: all .5s;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar-nav li{
+    line-height: 40px;  
+    width: 100%;
+    transition: all .3s;
+    padding: 0px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color:#fff;
+}
+  
+.sidebar-nav li:hover{
+    background: $site-color;
+}
+  
+  
