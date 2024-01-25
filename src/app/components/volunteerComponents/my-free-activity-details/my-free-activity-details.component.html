@@ -50,10 +50,10 @@
                             {{ row.manager.association.name }}
                         </div>
                         <div class="myCol-20 py-3" *ngIf="row.status == 'TAKEN'">
-                            <mat-icon class="icon" fontIcon="timer"></mat-icon>
+                            <i class="bi bi-stopwatch fs-3 text-primary"></i>
                         </div>
                         <div class="myCol-20 py-3" *ngIf="row.status == 'DONE'">
-                            <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                            <i class="bi bi-check2-circle fs-3 text-success"></i>
                         </div>
                     </div>
                 </div>

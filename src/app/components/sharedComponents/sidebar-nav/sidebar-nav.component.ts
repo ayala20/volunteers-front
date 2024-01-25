@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { getFromLocalStorage, removeFromLocalStorage } from 'src/app/shared/storageUtils';
 
@@ -9,11 +9,18 @@ import { getFromLocalStorage, removeFromLocalStorage } from 'src/app/shared/stor
 })
 export class SidebarNavComponent {
   myClass: string = 'menuDisplayed'
-  nameUser: string = ''
 
   constructor(public userService: UserService) {
-    this.nameUser = ''
     this.myClass = 'menuDisplayed'
+  }
+
+  getSignUser() {
+    return getFromLocalStorage("user").roleUser;
+  }
+
+  isUserConnect() {
+    const userRole = this.getSignUser()
+    return userRole != undefined;
   }
 
   onClick() {

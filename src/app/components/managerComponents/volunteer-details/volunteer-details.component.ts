@@ -20,7 +20,7 @@ export interface DialogData {
 })
 export class VolunteerDetailsComponent {
 
-  freeActivities: IFreeActivity[]
+  freeActivities: IFreeActivity[] = []
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,
     private freeActivityService: FreeActivityService,
@@ -29,14 +29,12 @@ export class VolunteerDetailsComponent {
     private router: Router,
     public spinnerService: SpinnerService) {
     this.findAllFreeActivity()
-    debugger;
   }
 
   findAllFreeActivity() {
     const volunteerId = this.data.volunteer.id!
     this.freeActivityService.findAllFreeActivityByVolunteerAndStatus(volunteerId, ['TAKEN', 'DONE', 'REQUEST'])
       .subscribe(data => {
-        debugger
         this.freeActivities = data
       })
   }

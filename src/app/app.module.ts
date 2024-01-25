@@ -51,6 +51,8 @@ import { FreeActivitiesInAssociationComponent } from './components/managerCompon
 import { VolunteerDetailsComponent } from './components/managerComponents/volunteer-details/volunteer-details.component';
 import { SidebarNavComponent } from './components/sharedComponents/sidebar-nav/sidebar-nav.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ForgotPasswordFormComponent } from './components/registrationComponents/forgot-password-form/forgot-password-form.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FreeActivitiesInAssociationComponent,
     VolunteerDetailsComponent,
     SidebarNavComponent,
+    ForgotPasswordFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSnackBarModule,
     NgbRatingModule,
     MatProgressBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule
   ],
   providers: [AuthGuard, DatePipe, {
     provide: HTTP_INTERCEPTORS,

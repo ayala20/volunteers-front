@@ -12,6 +12,8 @@ import { VolunteerService } from 'src/app/services/volunteer.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { dateOfBirthFuturValidator, dateOfBirthValidator } from 'src/app/validators/dateOfBirthValidator';
 import { idNumberValidator } from 'src/app/validators/idNumberValidator';
+import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sign-up-volunteer',
@@ -26,7 +28,8 @@ export class SignUpVolunteerComponent {
     private formBuilder: FormBuilder,
     public volunteerService: VolunteerService,
     private router: Router,
-    public userService: UserService
+    public userService: UserService,
+    public dialog: MatDialog,
   ) {
     this.signUpForm = this.formBuilder.group({
       fullNameControl: new FormControl('', [Validators.required]),
@@ -66,10 +69,29 @@ export class SignUpVolunteerComponent {
       password: this.signUpForm.value.passwordControl,
       email: this.signUpForm.value.emailControl,
     };
-    this.volunteerService.createVolunteer(newVolunteer).subscribe((data) => {
-      saveToLocalStorage('user', data);
-      this.userService.setUserConnect(true)
-      this.router.navigate(['/menu']);
+    this.volunteerService.createVolunteer(newVolunteer)
+      .subscribe(
+        (data) => {
+          saveToLocalStorage('user', data);
+          this.userService.setUserConnect(true)
+          this.router.navigate(['/menu']);
+        },
+        (error) => {
+          this.openAlert(error.status)
+        },
+      );
+  }
+
+  openAlert(statusNumber: number) {
+    let content = ""
+    if (statusNumber == 409) {
+      content = `אחד או יותר מהפרטים שהזנת קיימים אצלנו במערכת!` + "<br />" + "נסה שוב ליצור משתמש או נסה להתחבר."
+    }
+    this.dialog.open(AlertDialogComponent, {
+      data: {
+        content: content,
+        class: 'alert-danger',
+      }
     });
   }
 

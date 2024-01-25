@@ -29,7 +29,6 @@ export class FreeActivitiesInAssociationComponent {
     .subscribe(data => {
       this.freeActivities = data
       this.dataSource = this.freeActivities
-      debugger;
     })
   }
 }

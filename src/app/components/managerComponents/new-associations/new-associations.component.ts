@@ -4,6 +4,8 @@ import { IAssociation } from 'src/app/models/association.interface';
 import { AssociationDetailsComponent } from '../association-details/association-details.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SpinnerService } from 'src/app/services/spinner.service';
+import { environment } from 'src/environment/environment';
+import { AssociationService } from 'src/app/services/association.service';
 
 @Component({
   selector: 'app-new-associations',
@@ -12,8 +14,12 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 })
 export class NewAssociationsComponent {
   associations: Array<IAssociation> = [];
+  url: string = environment.url;
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog, public spinnerService: SpinnerService) {
+  constructor(private route: ActivatedRoute, 
+    public dialog: MatDialog, 
+    public spinnerService: SpinnerService,
+    public associationService: AssociationService) {
     this.associations = this.route.snapshot.data['associations'];
   }
 
@@ -24,5 +30,4 @@ export class NewAssociationsComponent {
       },
     });
   }
-
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { IFreeActivity } from 'src/app/models/freeActivity.interface';
 import { EditFreeActivityFormComponent } from '../edit-free-activity-form/edit-free-activity-form.component';
 import { SpinnerService } from 'src/app/services/spinner.service';
 

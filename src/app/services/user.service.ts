@@ -16,7 +16,6 @@ export class UserService {
   }
 
   setUserConnect(isConnect: boolean): void {
-    debugger
     this.isUserConnect = isConnect;
     if (isConnect) {
       let user = getFromLocalStorage("user")
@@ -28,10 +27,6 @@ export class UserService {
       }
     }
   }
-
-  // isUserConnect(): boolean {
-  //   return this.userConnect;
-  // }
 
   getName(): string {
     return this.nameUser;

@@ -5,7 +5,6 @@ import { IFreeActivity } from 'src/app/models/freeActivity.interface';
 import { FreeActivityService } from 'src/app/services/free-activity.service';
 import { MyFreeActivityDetailsComponent } from '../my-free-activity-details/my-free-activity-details.component';
 import { DatePipe } from '@angular/common';
-import { state } from '@angular/animations';
 
 export interface DialogData {
   freeActivity: IFreeActivity

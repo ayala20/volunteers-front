@@ -7,21 +7,16 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IVolunteer } from 'src/app/models/volunteer.interface';
-import { VolunteerService } from 'src/app/services/volunteer.service';
-import { getFromLocalStorage, saveToLocalStorage } from 'src/app/shared/storageUtils';
-import { dateOfBirthValidator } from 'src/app/validators/dateOfBirthValidator';
-import { idNumberValidator } from 'src/app/validators/idNumberValidator';
+import { Router } from '@angular/router';
+import { getFromLocalStorage } from 'src/app/shared/storageUtils';
 import { AssociationService } from 'src/app/services/association.service';
-import { IAssociation } from 'src/app/models/association.interface';
 import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
 import { IDistrict } from 'src/app/models/district.interface';
 import { ICategory } from 'src/app/models/category.interface';
 import { DistrictService } from 'src/app/services/district.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { FreeActivityService } from 'src/app/services/free-activity.service';
-import { IFreeActivity, IFreeActivityCreate } from 'src/app/models/freeActivity.interface';
+import { IFreeActivityCreate } from 'src/app/models/freeActivity.interface';
 import { dateNotPast } from 'src/app/validators/dateNotPast';
 
 @Component({

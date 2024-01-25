@@ -13,6 +13,7 @@ import { ManagerService } from 'src/app/services/manager.service';
 import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { AssociationRegistrationComponent } from '../association-registration/association-registration.component';
 import { UserService } from 'src/app/services/user.service';
+import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-sign-up-manager',
@@ -62,10 +63,28 @@ export class SignUpManagerComponent {
       association: this.signUpForm.value.associationControl,
       passwordAssociation: this.signUpForm.value.passwordAssociationControl
     };
-    this.managerService.createManager(newManager).subscribe((data: IManager) => {
-      saveToLocalStorage('user', data);
-      this.userService.setUserConnect(true)
-      this.router.navigate(['/menu']);
+    this.managerService.createManager(newManager).subscribe(
+      (data: IManager) => {
+        saveToLocalStorage('user', data);
+        this.userService.setUserConnect(true)
+        this.router.navigate(['/menu']);
+      },
+      (error) => {
+        this.openAlert(error.status)
+      },
+    );
+  }
+
+  openAlert(statusNumber: number) {
+    let content = ""
+    if (statusNumber == 409) {
+      content = `אחד או יותר מהפרטים שהזנת קיימים אצלנו במערכת!` + "<br />" + "נסה שוב ליצור משתמש או נסה להתחבר."
+    }
+    this.dialog.open(AlertDialogComponent, {
+      data: {
+        content: content,
+        class: 'alert-danger',
+      }
     });
   }
 

@@ -4,8 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/app/models/category.interface';
 import { IDistrict } from 'src/app/models/district.interface';
 import { IFreeActivity } from 'src/app/models/freeActivity.interface';
-import { CategoryService } from 'src/app/services/category.service';
-import { DistrictService } from 'src/app/services/district.service';
 import { FreeActivityService } from 'src/app/services/free-activity.service';
 import { getFromLocalStorage } from 'src/app/shared/storageUtils';
 import { FreeActivityDetailsComponent } from '../free-activity-details/free-activity-details.component';
@@ -43,20 +41,36 @@ export class RequestComponent {
   }
 
   nextStep() {
-    if ((this.districtId == "" && this.step == 1) || (this.categoryId == "" && this.step == 2)) return;
-    this.step += 1;
-    if (this.step == 3) {
-      this.nextDisable = true;
-      this.FreeActivityService.filterFreeActivitiesByDistrictAndCategory(this.districtId, this.categoryId)
-      .subscribe(data => {
-        this.freeActivities = data
-        console.log(this.freeActivities); 
-      })
+    if (this.step == 1) {
+      this.toCategory();
+    } else {
+      this.toFinish();
     }
   }
 
+  toCategory() {
+    if (this.districtId == "") return;
+    this.step += 1;
+    if (this.categoryId == "") {
+      this.nextDisable = true;
+    } else {
+      this.nextDisable = false;
+    }
+  }
+
+  toFinish() {
+    if (this.categoryId == "") return;
+    this.step += 1;
+    this.nextDisable = true;
+    this.FreeActivityService.filterFreeActivitiesByDistrictAndCategory(this.districtId, this.categoryId)
+      .subscribe(data => {
+        this.freeActivities = data
+        console.log(this.freeActivities);
+      })
+  }
+
   prevStep() {
-    if(this.step == 1) {
+    if (this.step == 1) {
       this.router.navigate(['/menu']);
     } else {
       this.step -= 1;
@@ -81,7 +95,7 @@ export class RequestComponent {
 
   openDialog(freeActivity: IFreeActivity) {
     console.log(freeActivity);
-    
+
     this.dialog.open(FreeActivityDetailsComponent, {
       data: {
         freeActivity

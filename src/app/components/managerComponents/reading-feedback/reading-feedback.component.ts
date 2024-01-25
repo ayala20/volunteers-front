@@ -15,7 +15,6 @@ export class ReadingFeedbackComponent {
     private datePipe: DatePipe
   ) {
     this.feedbacks = this.route.snapshot.data['feedbacks'];
-    debugger;
   }
 
   convertISODateToRegularFormat(isoDate: any) {

@@ -26,4 +26,9 @@ export class ManagerService {
     let url = `${this.apiUrl}/manager/signIn/${userName}/${passsword}`;
     return this._http.get<IManager>(url);
   }
+
+  isManagerExistsByEmail(email: string) {
+    let url = `${this.apiUrl}/manager/isManagerExistsByEmail/${email}`;
+    return this._http.get<Boolean>(url);
+  }
 }

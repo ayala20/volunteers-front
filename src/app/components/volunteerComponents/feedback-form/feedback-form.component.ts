@@ -19,16 +19,17 @@ export class FeedbackFormComponent {
   fullName: string;
   currentRate = 0;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private feedbackService: FeedbackService,
     private router: Router,
     private route: ActivatedRoute,
-    public dialog: MatDialog) {
+    public dialog: MatDialog
+  ) {
     this.fullName = getFromLocalStorage('user').full_name;
     this.feedbackForm = this.formBuilder.group({
       noteControl: new FormControl('', [Validators.required]),
     })
-
     this.idFreeActivity = route.snapshot.paramMap.get('id')!
   }
 
@@ -41,7 +42,6 @@ export class FeedbackFormComponent {
       idFreeActivity: this.idFreeActivity,
     };
     this.feedbackService.createFeedBack(newFeedBack).subscribe(data => {
-      debugger
       this.dialog.open(AlertDialogComponent, {
         data: {
           content: "תודה רבה על המשוב!",

@@ -28,6 +28,11 @@ export class VolunteerService implements Resolve<Array<IVolunteer>> {
     return this._http.get<IVolunteer>(url);
   }
 
+  isVolunteerExistsByEmail(email: string) {
+    let url = `${this.apiUrl}/volunteer/isVolunteerExistsByEmail/${email}`;
+    return this._http.get<Boolean>(url);
+  }
+
   resolve(route: ActivatedRouteSnapshot): Observable<Array<IVolunteer>> {
     return this.getVolunteers();
   }

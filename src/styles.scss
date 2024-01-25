@@ -97,4 +97,8 @@ $site-color: #40e0d0;
     background-color: $site-color; 
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 

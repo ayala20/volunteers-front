@@ -6,7 +6,7 @@
     <div class="d-flex h-100 flex-column align-items-center text-center">
 
         <div class="col-md-10 col-12">
-            
+
             <div class="row m-0">
 
                 <div *ngIf="freeActivities.length > 0" class="w-100 bg-light h6">
@@ -37,7 +37,7 @@
                             </strong>
                         </div>
                     </div>
-    
+
                     <div *ngFor="let row of dataSource" class="row border">
                         <div class="myCol-22 py-3">
                             {{ row.category.category_name }}
@@ -52,16 +52,16 @@
                             {{ row.volunteer.full_name }}
                         </div>
                         <div class="myCol-12 py-3" *ngIf="row.status == 'TAKEN'">
-                            <mat-icon class="icon" fontIcon="timer"></mat-icon>
+                            <i class="bi bi-stopwatch fs-3 text-primary"></i>
                         </div>
                         <div class="myCol-12 py-3" *ngIf="row.status == 'DONE'">
-                            <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                            <i class="bi bi-check2-circle fs-3 text-success"></i>
                         </div>
                         <div class="myCol-12 py-3" *ngIf="row.status == 'WAITING'">
-                            <mat-icon class="icon" fontIcon="fiber_new"></mat-icon>
+                            <span class="badge badge-secondary border border-warning text-warning">Waiting</span>
                         </div>
                         <div class="myCol-12 py-3" *ngIf="row.status == 'REQUEST'">
-                            <mat-icon class="icon" fontIcon="contact_support"></mat-icon>
+                            <i class="bi bi-patch-question fs-3 text-info"></i>
                         </div>
                     </div>
                 </div>

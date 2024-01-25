@@ -67,8 +67,6 @@ export class AssociationRegistrationComponent {
 
     let date = Date.now()
 
-    debugger
-
     const formDataFile = new FormData();
     let name1 = date + '.' + this.selectedFile.name.split('.').pop()
     formDataFile.append('file', this.selectedFile, name1);
@@ -96,18 +94,36 @@ export class AssociationRegistrationComponent {
 
     this.associationService
       .createAssociation(newAssociation)
-      .subscribe((data) => {
-        this.router.navigate(['/signUpManager']);
-        this.dialogRef.close();
-        this.dialog.open(AlertDialogComponent, {
-          data: {
-            content: "בקשתך לפתיחת מערך התנדבות בארגון שלך התקבלה בהצלחה!" +
-              "<br />" +
-              "המתן לאישור המנהל עבור רישום מנהל אחראי התנדבות.",
-            class: 'alert-success',
-            link: '/logIn'
-          }
-        });
-      });
+      .subscribe(
+        (data) => {
+          this.router.navigate(['/signUpManager']);
+          this.dialogRef.close();
+          this.dialog.open(AlertDialogComponent, {
+            data: {
+              content: "בקשתך לפתיחת מערך התנדבות בארגון שלך התקבלה בהצלחה!" +
+                "<br />" +
+                "המתן לאישור המנהל עבור רישום מנהל אחראי התנדבות.",
+              class: 'alert-success',
+              link: '/logIn'
+            }
+          });
+        },
+        (error) => {
+          this.openAlert(error.status)
+        },
+      );
+  }
+
+  openAlert(statusNumber: number) {
+    let content = ""
+    if (statusNumber == 409) {
+      content = `אחד או יותר מהפרטים שהזנת קיימים אצלנו במערכת!` + "<br />" + "נסה שוב ליצור."
+    }
+    this.dialog.open(AlertDialogComponent, {
+      data: {
+        content: content,
+        class: 'alert-danger',
+      }
+    });
   }
 }

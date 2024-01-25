@@ -34,13 +34,13 @@
                             {{ row.manager.association.name }}
                         </div>
                         <div class="myCol-20 py-3" *ngIf="row.status == 'TAKEN'">
-                            <mat-icon class="icon" fontIcon="timer"></mat-icon>
+                            <i class="bi bi-stopwatch fs-3 text-primary"></i>
                         </div>
                         <div class="myCol-20 py-3" *ngIf="row.status == 'DONE'">
-                            <mat-icon class="icon" fontIcon="done_outline"></mat-icon>
+                            <i class="bi bi-check2-circle fs-3 text-success"></i>
                         </div>
-                        <div class="myCol-12 py-3" *ngIf="row.status == 'WAITING'">
-                            <mat-icon class="icon" fontIcon="fiber_new"></mat-icon>
+                        <div class="myCol-20 py-3" *ngIf="row.status == 'REQUEST'">
+                            <i class="bi bi-patch-question fs-3 text-info"></i>
                         </div>
                     </div>
                 </div>

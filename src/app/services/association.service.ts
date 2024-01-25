@@ -14,8 +14,13 @@ export class AssociationService implements Resolve<Array<IAssociation>> {
   constructor(private _http: HttpClient) { }
 
   getAssociation(status: string): Observable<Array<IAssociation>> {
-    let url = `${this.apiUrl}/association/${status}`;
+    let url = `${this.apiUrl}/association/getAllByStatus/${status}`;
     return this._http.get<Array<IAssociation>>(url);
+  }
+
+  getNamesOfAssociations() {
+    let url = `${this.apiUrl}/association/getNamesOfAssociations`;
+    return this._http.get<Array<any>>(url);
   }
 
   createAssociation(association: IAssociationCreate): Observable<any> {
@@ -37,7 +42,6 @@ export class AssociationService implements Resolve<Array<IAssociation>> {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<Array<IAssociation>> {
-    debugger
     let status = 'APPROVED'
     if (route.routeConfig?.path == 'signUpManager' || route.routeConfig?.path == 'statuses' || route.routeConfig?.path == 'reportsOfAssociations')
       status = 'APPROVED'

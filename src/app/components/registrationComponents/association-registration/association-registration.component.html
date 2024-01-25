@@ -64,7 +64,7 @@
                 </mat-form-field>
 
                 <div class="col-md-6 col-12" style="text-align: right;">
-                    <label class="form-label mb-0">בחר מסמך תקנון העמותה</label>
+                    <label class="form-label mb-0">תעודת רישום עמותה</label>
                     <input class="form-control form-control" type="file" accept=".pdf" formControlName="fileControl"
                         (change)="changeFile($event)">
                     <p *ngIf="error1" class="text-danger pe-3" style="font-size: small;">
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="col-md-6 col-12" style="text-align: right;">
-                    <label class="form-label mb-0">בחר תמונת לוגו לעמותה</label>
+                    <label class="form-label mb-0">תמונת לוגו לעמותה</label>
                     <input class="form-control form-control" type="file" accept="image/*"
                         formControlName="logoImageControl" (change)="changeImage($event)">
                     <p *ngIf="error2" class="text-danger pe-3" style="font-size: small;">

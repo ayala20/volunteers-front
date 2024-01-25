@@ -11,16 +11,16 @@
 
             <p class="h2 col-12 mb-3">התחברות</p>
 
-            <div class="mb-4">
+            <div class="mb-3">
                 <div class="col-12">
                     <button mat-raised-button type="button" class="col-6" [ngClass]="{'buttonAction': signUser == 'v'}"
-                        (click)="changeUser()">מתנדב</button>
+                        (click)="signUser = 'v'">מתנדב</button>
                     <button mat-raised-button type="button" class="col-6" [ngClass]="{'buttonAction': signUser == 'm'}"
-                        (click)="changeUser()">מנהל</button>
+                        (click)="signUser = 'm'">מנהל</button>
                 </div>
             </div>
 
-            <mat-form-field [color]="color" appearance="fill" class="col-12" *ngIf="signUser == 'v'">
+            <mat-form-field  appearance="fill" class="col-12" *ngIf="signUser == 'v'">
                 <mat-label>מספר זהות</mat-label>
                 <input matInput formControlName="idNumberControl">
                 <mat-error *ngIf="signInForm.get('idNumberControl')?.hasError('required')">
@@ -31,7 +31,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field [color]="color" appearance="fill" class="col-12" *ngIf="signUser == 'm'">
+            <mat-form-field appearance="fill" class="col-12" *ngIf="signUser == 'm'">
                 <mat-label>דוא"ל</mat-label>
                 <input matInput formControlName="emailControl">
                 <mat-error *ngIf="signInForm.get('emailControl')?.hasError('required')">
@@ -51,17 +51,25 @@
                 <mat-error *ngIf="signInForm.get('passwordControl')?.hasError('minlength')">
                     סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
                 </mat-error>
-                <button mat-icon-button matSuffix (click)="hide = !hide" type="button" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
+                <button mat-icon-button matSuffix (click)="hide = !hide" type="button"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
+
+            <div class="text-start">
+                <p><a class="link-opacity-100 py-0 px-2" type="button" (click)="openForgotPasswordForm()">שכחת סיסמה?</a></p>
+            </div>
 
             <div>
                 <button mat-raised-button class="mybutton col-12 w-100" type="submit">התחברות</button>
             </div>
 
-            <p class="h5 col-12 mt-4">עוד לא נרשמת?</p>
+            <div>
+                <hr class="col-12 my-3" />
+            </div>
+
+            <p class="h5 col-12">עוד לא נרשמת?</p>
 
             <a mat-button class="h4 col-12 pt-2" routerLink="/signUpVolunteer">
                 <p class="d-flex align-items-center">להרשמת מתנדב

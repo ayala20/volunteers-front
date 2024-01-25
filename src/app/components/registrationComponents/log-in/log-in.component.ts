@@ -14,6 +14,7 @@ import { saveToLocalStorage } from 'src/app/shared/storageUtils';
 import { AlertDialogComponent } from '../../sharedComponents/alert-dialog/alert-dialog.component';
 import { idNumberValidator } from 'src/app/validators/idNumberValidator';
 import { UserService } from 'src/app/services/user.service';
+import { ForgotPasswordFormComponent } from '../forgot-password-form/forgot-password-form.component';
 
 @Component({
   selector: 'app-log-in',
@@ -21,7 +22,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./log-in.component.scss'],
 })
 export class LogInComponent {
-  color: ThemePalette = 'primary';
   signUser: string;
   signInForm: FormGroup;
   hide = true;
@@ -42,16 +42,7 @@ export class LogInComponent {
     });
   }
 
-  changeUser() {
-    if (this.signUser === 'v') {
-      this.signUser = 'm';
-    } else {
-      this.signUser = 'v';
-    }
-  }
-
   signIn() {
-    debugger
     if (!this.signInForm.controls['passwordControl'].valid) return;
     if (this.signUser == 'v' && !this.signInForm.controls['idNumberControl'].valid) return;
     if (this.signUser == 'm' && !this.signInForm.controls['emailControl'].valid) return;
@@ -99,10 +90,19 @@ export class LogInComponent {
     }
     this.dialog.open(AlertDialogComponent, {
       data: {
-        content: content,
+        email: content,
         class: 'alert-danger',
         link: '/logIn'
       }
+    });
+  }
+
+  openForgotPasswordForm() {
+    this.dialog.open(ForgotPasswordFormComponent, {
+      data: {
+        email: this.signInForm.value.emailControl,
+      },
+      width: '50%',
     });
   }
 }

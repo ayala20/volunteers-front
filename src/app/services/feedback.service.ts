@@ -28,7 +28,6 @@ export class FeedbackService implements Resolve<Array<IFeedBack>> {
 
   getFeedbackByManagerId(): Observable<Array<any>> {
     const managerId = getFromLocalStorage("user").id
-    debugger;
     let url = `${this.apiUrl}/FeedBack/getFeedbackByManagerId/${managerId}`;
     return this._http.get<Array<any>>(url);
   }
