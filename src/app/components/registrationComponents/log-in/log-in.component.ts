@@ -90,7 +90,7 @@ export class LogInComponent {
     }
     this.dialog.open(AlertDialogComponent, {
       data: {
-        email: content,
+        content: content,
         class: 'alert-danger',
         link: '/logIn'
       }

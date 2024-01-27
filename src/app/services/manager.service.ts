@@ -17,6 +17,16 @@ export class ManagerService {
     return this._http.get<Array<IManager>>(url);
   }
 
+  updatePassword(email: string, passsword: string): Observable<Boolean> {
+    let url = `${this.apiUrl}/manager/updatePassword/${email}/${passsword}`;
+    return this._http.put<Boolean>(url, {});
+  }
+
+  isCodeGood(email: string, passsword: string): Observable<Boolean> {
+    let url = `${this.apiUrl}/manager/isCodeGood/${email}/${passsword}`;
+    return this._http.get<Boolean>(url);
+  }
+
   createManager(manager: IManagerCreate): Observable<any> {
     let url = this.apiUrl + '/manager';
     return this._http.post<any>(url, manager);
