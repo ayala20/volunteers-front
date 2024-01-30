@@ -1,0 +1,55 @@
+<form class="d-flex h-100 flex-column align-items-center text-center" [formGroup]="updateForm" (submit)="updateVolunteer()">
+
+    <div class="col-lg-4 col-12 px-4 pb-4">
+
+        <div class="row">
+            <div class="d-flex justify-content-center flex-column align-items-center">
+                <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
+                    <img class="logoImg rounded-circle " src="../../../assets/logo.png">
+                </div>
+            </div>
+
+            <div class="row col-12 m-0">
+                <p class="h3 col-12 mb-3">עדכון פרטי התקשרות</p>
+                <p class="text-end"><strong>שמך: </strong>{{ user.full_name}}</p>
+                <p class="text-end"><strong>מספר זהות: </strong>{{ user.id_number}}</p>
+                <p class="text-end"><strong>גיל: </strong>{{ getAgeFromDateOfBirth() }}</p>
+            </div>
+
+            <mat-form-field appearance="fill" class="col-md-12 col-12">
+                <mat-label>מספר טלפון</mat-label>
+                <input matInput type="tel" formControlName="phoneControl">
+                <mat-error *ngIf="updateForm.get('phoneControl')?.hasError('required')">
+                    טלפון <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="updateForm.get('phoneControl')?.hasError('pattern')">
+                    טלפון <strong>לא תקין</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-12 col-12">
+                <mat-label>דוא"ל</mat-label>
+                <input matInput type="email" formControlName="emailControl">
+                <mat-error *ngIf="updateForm.get('emailControl')?.hasError('required')">
+                    דוא"ל <strong>חובה</strong>
+                </mat-error>
+                <mat-error *ngIf="updateForm.get('emailControl')?.hasError('email')">
+                    כתובת דוא"ל <strong>לא תקינה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-md-12 col-12">
+                <mat-label>כתובת</mat-label>
+                <input matInput type="text" formControlName="addressControl">
+                <mat-error *ngIf="updateForm.get('addressControl')?.hasError('required')">
+                    כתובת <strong>חובה</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <div>
+                <button mat-raised-button class="mybutton col-12 mt-2">שמור שינויים</button>
+            </div>
+
+        </div>
+    </div>
+</form>

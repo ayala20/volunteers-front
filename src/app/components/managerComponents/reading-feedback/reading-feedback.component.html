@@ -1,8 +1,8 @@
 <div class="d-flex h-100 flex-column align-items-center text-center">
 
-    <div class="col-lg-4 col-10 px-4 pb-4">
+    <div class="col-lg-6 col-12 pb-4">
 
-        <div class="row">
+        <form class="row" [formGroup]="filterForm">
             <div class="d-flex justify-content-center flex-column align-items-center">
                 <div class="logo mb-3 mt-5 d-flex justify-content-center align-items-center">
                     <img class="logoImg rounded-circle " src="../../../assets/logo.png">
@@ -11,20 +11,34 @@
 
             <p class="h2 col-12 mb-3">קריאת משובי מתנדבים:</p>
 
-            <div class="card text-center p-0 mt-2" *ngFor="let feedback of feedbacks">
-                <div class="card-header">
-                    {{feedback.volunteerData.full_name}}
-                </div>
-                <div class="card-body">
-                    <p class="card-text my-0"><strong>תאריך המשוב: </strong>{{convertISODateToRegularFormat(feedback.date)}}</p>
-                    <p class="card-text my-0"><strong>הערה במשוב: </strong>{{feedback.note}}</p>
-                    <p class="card-text my-0"><strong>עבור התנדבות: </strong>{{feedback.freeActivityData.name}}</p>
+            <mat-form-field class="col-md-6 col-12">
+                <mat-label>חיפוש לפי שם עמותה</mat-label>
+                <input type="text" matInput formControlName="myControlAssociation" [matAutocomplete]="auto" (keyup)="filter()">
+                <mat-autocomplete #auto="matAutocomplete"></mat-autocomplete>
+                <mat-icon matSuffix><i class="bi bi-search"></i></mat-icon>
+            </mat-form-field>
 
-                </div>
-                <div class="card-footer text-body-secondary">
-                    <ngb-rating [max]="5" [(rate)]="feedback.rating" [readonly]="true"></ngb-rating>
-                </div>
+            <mat-form-field class="col-md-6 col-12">
+                <mat-label>חיפוש לפי שם מתנדב</mat-label>
+                <input type="text" matInput formControlName="myControlVolunteer" [matAutocomplete]="auto" (keyup)="filter()">
+                <mat-autocomplete #auto="matAutocomplete"></mat-autocomplete>
+                <mat-icon matSuffix><i class="bi bi-search"></i></mat-icon>
+            </mat-form-field>
+
+            <div *ngFor="let feedback of filteredOptions" class="col-md-6 col-12">
+                <button type="button" class="col-12 my-2 border btn shadow btn-light" (click)="openDialog(feedback)">
+                    <div class="row align-items-center my-2 p-2">
+                        <div class="col-md-3 col-3" style="text-align: left;">
+                            <img class="logoImg rounded-circle" style="width: 50px; height: 50px;"
+                                [src]="url + '/images/' + feedback.association.logo_image">
+                        </div>
+                        <div class="card-body col-md-9 col-9 pe-3 ps-2">
+                            <p class="card-text"><strong>שם המתנדב: </strong>{{feedback.volunteer.full_name}}</p>
+                            <p class="card-text"><strong>שם האחראי: </strong>{{feedback.manager.name}}</p>
+                        </div>
+                    </div>
+                </button>
             </div>
-        </div>
+        </form>
     </div>
 </div>

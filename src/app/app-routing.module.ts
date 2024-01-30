@@ -24,6 +24,8 @@ import { MyFreeActivityDetailsComponent } from './components/volunteerComponents
 import { FeedbackFormComponent } from './components/volunteerComponents/feedback-form/feedback-form.component';
 import { FeedbackService } from './services/feedback.service';
 import { VolunteerService } from './services/volunteer.service';
+import { EditManagerFromComponent } from './components/registrationComponents/edit-manager-from/edit-manager-from.component';
+import { EditVolunteerFormComponent } from './components/registrationComponents/edit-volunteer-form/edit-volunteer-form.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent, canActivate: [AuthGuard] },
@@ -121,7 +123,9 @@ const routes: Routes = [
     },
     canActivate: [AuthGuard]
   },
-  { path: 'feedbackForm', component: FeedbackFormComponent, canActivate: [AuthGuard] }
+  { path: 'feedbackForm', component: FeedbackFormComponent, canActivate: [AuthGuard] },
+  { path: 'editManager', component: EditManagerFromComponent },
+  { path: 'editVolunteer', component: EditVolunteerFormComponent }
 ];
 
 @NgModule({

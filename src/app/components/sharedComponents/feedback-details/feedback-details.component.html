@@ -1,0 +1,26 @@
+<div class="myTitleModel">
+    <button mat-button mat-dialog-close>✖️</button>
+    <p class="h3 col-12 mb-3 text-center pb-2 px-4">משוב על התנדבות</p>
+</div>
+<mat-dialog-content class="mat-typography px-0 m-0">
+    <div class="d-flex h-100 flex-column align-items-center text-center">
+
+        <div class="col-md-10 col-12">
+
+            <div class="row m-0">
+                <div class="col-md-12 col-12">
+                    <div><strong>שם התנדבות:</strong> {{ data.feedback.idFreeActivity.name }}</div>
+                    <div><strong>שם המתנדב:</strong> {{ data.feedback.volunteer.full_name }}</div>
+                    <div><strong>שם האחראי:</strong> {{ data.feedback.manager.name }}</div>
+                    <hr>
+                    <u>פרטי המשוב:</u>
+                    <div><strong>תאריך המשוב:</strong> {{ convertISODateToRegularFormat(data.feedback.date) }}</div>
+                    <div class="card-footer text-body-secondary mt-2">
+                        <ngb-rating [max]="5" [(rate)]="data.feedback.rating" [readonly]="true"></ngb-rating>
+                    </div>
+                    <div><strong>המשוב:</strong> {{ data.feedback.note }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

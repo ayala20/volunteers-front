@@ -58,15 +58,16 @@
                 אלו כל ההתנדבויות שעלו בחיפוש שלך
             </div>
             <div *ngFor="let freeActivity of freeActivities" class="col-md-12 col-12">
-                <button mat-raised-button type="button" class="buttonDistrict col-12 w-100 py-5 my-2"
+                <button type="button" class="col-12 my-2 border btn shadow btn-light"
                     (click)="openDialog(freeActivity)">
-                    <div class="row align-items-center">
-                        <div class="col-md-1 col-1">
+                    <div class="row align-items-center my-2">
+                        <div class="col-md-3 col-3" style="text-align: left;">
                             <img class="logoImg rounded-circle" style="width: 50px; height: 50px;"
-                                [src]="url + '/images/' + freeActivity.manager.association.logo_image">
+                            [src]="url + '/images/' + freeActivity.manager.association.logo_image">
                         </div>
-                        <p class="col-md-1 col-1"></p>
-                        <p class="col-md-9 col-9 h5">{{freeActivity.name}}</p>
+                        <div class="card-body col-md-9 col-9 pe-3 ps-2" style="text-align: right;">
+                            <p class="card-text"><strong>{{freeActivity.name}}</strong></p>
+                        </div>
                     </div>
                 </button>
             </div>

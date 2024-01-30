@@ -53,6 +53,10 @@ import { SidebarNavComponent } from './components/sharedComponents/sidebar-nav/s
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ForgotPasswordFormComponent } from './components/registrationComponents/forgot-password-form/forgot-password-form.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { EditManagerFromComponent } from './components/registrationComponents/edit-manager-from/edit-manager-from.component';
+import { EditVolunteerFormComponent } from './components/registrationComponents/edit-volunteer-form/edit-volunteer-form.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FeedbackDetailsComponent } from './components/sharedComponents/feedback-details/feedback-details.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +89,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     VolunteerDetailsComponent,
     SidebarNavComponent,
     ForgotPasswordFormComponent,
+    EditManagerFromComponent,
+    EditVolunteerFormComponent,
+    FeedbackDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,7 +115,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     NgbRatingModule,
     MatProgressBarModule,
     MatTooltipModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCheckboxModule
   ],
   providers: [AuthGuard, DatePipe, {
     provide: HTTP_INTERCEPTORS,

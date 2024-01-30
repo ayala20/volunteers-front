@@ -29,6 +29,7 @@ export class StatusesComponent implements OnInit {
         association
       },
       width: '100%',
+      height: '90%',
     });
   }
 

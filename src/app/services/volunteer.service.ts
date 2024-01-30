@@ -23,6 +23,11 @@ export class VolunteerService implements Resolve<Array<IVolunteer>> {
     return this._http.put<Boolean>(url, {});
   }
 
+  updateVolunteer(id: string, user: any): Observable<any> {
+    let url = `${this.apiUrl}/volunteer/updateVolunteer/${id}`;
+    return this._http.put<any>(url, user);
+  }
+
   createVolunteer(volunteer: IVolunteerCreate): Observable<any> {
     let url = this.apiUrl + '/volunteer';
     return this._http.post<any>(url, volunteer);
