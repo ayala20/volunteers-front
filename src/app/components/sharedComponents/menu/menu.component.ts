@@ -22,7 +22,7 @@ export class MenuComponent {
     if ((this.user.roleUser != null || this.user.roleUser != undefined) && this.user.roleUser == 1) {
       this.listMenu = [
         {
-          name: 'אני רוצה להתנדב היום',
+          name: 'אני רוצה להתנדב',
           rout: '/request',
         },
         {

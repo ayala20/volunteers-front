@@ -40,8 +40,8 @@ export class FreeActivityService implements Resolve<Array<IFreeActivity>> {
     return this._http.post<any>(url, freeActivity);
   }
 
-  filterFreeActivitiesByDistrictAndCategory(districtId: string, categoryId: string): Observable<Array<IFreeActivity>> {
-    let url = `${this.apiUrl}/free-activity/${districtId}/${categoryId}`;
+  filterFreeActivitiesByDistrictAndCategory(districtIds: string[], categoryIds: string[]): Observable<Array<IFreeActivity>> {
+    let url = `${this.apiUrl}/free-activity/${districtIds}/${categoryIds}`;
     return this._http.get<Array<IFreeActivity>>(url);
   }
 

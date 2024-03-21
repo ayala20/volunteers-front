@@ -56,7 +56,7 @@
                     סיסמה <strong>חובה</strong>
                 </mat-error>
                 <mat-error *ngIf="signUpForm.get('passwordControl')?.hasError('minlength')">
-                    סיסמה חיבת להכיל <strong>8 תוים ומעלה</strong>
+                    סיסמה חייבת להכיל <strong>8 תוים ומעלה</strong>
                 </mat-error>
                 <button mat-icon-button matSuffix (click)="hide = !hide" type="button"
                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">

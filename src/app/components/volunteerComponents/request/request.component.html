@@ -19,9 +19,9 @@
         </div>
 
         <div class="row" *ngIf="this.step == 1">
-            <p class="h4 col-12 mb-3">היכן תרצה להתנדב היום?</p>
+            <p class="h4 col-12 mb-3">היכן תרצה להתנדב?</p>
             <div *ngFor="let district of districts" class="col-md-6 col-6">
-                <button mat-raised-button [class]="district.district_id == districtId ? 'choos' : 'nchoos' "
+                <button mat-raised-button [class]="isDistrictExists(district.district_id) ? 'choos' : 'nchoos' "
                     type="button" class="buttonDistrict col-12 w-100 py-5 my-2"
                     (click)="choosDistrict(district.district_id)">
                     <p class="h5">מחוז</p>
@@ -29,7 +29,7 @@
                 </button>
             </div>
             <div [ngClass]="districts.length % 2 == 0 ? 'col-md-12 col-12' : 'col-md-6 col-6'">
-                <button mat-raised-button [class]="districtId == '1' ? 'choos' : 'nchoos' " type="button"
+                <button mat-raised-button [class]="districtIds[0] == '1' ? 'choos' : 'nchoos' " type="button"
                     class="buttonDistrict col-12 w-100 py-5 my-2" (click)="choosDistrict('1')">
                     <p class="h5">לא משנה לי איזה מחוז</p>
                 </button>
@@ -40,13 +40,13 @@
             <p class="h4 col-12 mb-3">באיזה תחום תרצה להתנדב?</p>
             <div *ngFor="let category of categories" class="col-md-6 col-6">
                 <button mat-raised-button type="button"
-                    [class]="category.category_id == categoryId ? 'choos' : 'nchoos' "
+                    [class]="isCategoryExists(category.category_id) ? 'choos' : 'nchoos' "
                     class="buttonDistrict col-12 w-100 py-5 my-2" (click)="choosCategory(category.category_id)">
                     <p class="h5">{{category.category_name}}</p>
                 </button>
             </div>
             <div [class]="categories.length % 2 == 0 ? 'col-md-12 col-12' : 'col-md-6 col-6'">
-                <button mat-raised-button type="button" [class]="categoryId == '1' ? 'choos' : 'nchoos' "
+                <button mat-raised-button type="button" [class]="categoryIds[0] == '1' ? 'choos' : 'nchoos' "
                     class="buttonDistrict col-12 w-100 py-5 my-2" (click)="choosCategory('1')">
                     <p class="h5">לא משנה לי איזה תחום</p>
                 </button>
@@ -55,7 +55,7 @@
 
         <div class="row" *ngIf="this.step == 3">
             <div *ngIf="freeActivities.length != 0" class="h4">
-                אלו כל ההתנדבויות שעלו בחיפוש שלך
+                אלו כל ההתנדבויות האפשריות עפ"י בחירתך
             </div>
             <div *ngFor="let freeActivity of freeActivities" class="col-md-12 col-12">
                 <button type="button" class="col-12 my-2 border btn shadow btn-light"

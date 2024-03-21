@@ -21,8 +21,8 @@ export class RequestComponent {
   districts: Array<IDistrict> = [];
   categories: Array<ICategory> = [];
   freeActivities: Array<IFreeActivity> = []
-  districtId: string = "";
-  categoryId: string = "";
+  districtIds: string[] = [];
+  categoryIds: string[] = [];
   url: string = environment.url;
   nextDisable: boolean;
 
@@ -49,9 +49,9 @@ export class RequestComponent {
   }
 
   toCategory() {
-    if (this.districtId == "") return;
+    if (this.districtIds.length == 0) return;
     this.step += 1;
-    if (this.categoryId == "") {
+    if (this.categoryIds.length == 0) {
       this.nextDisable = true;
     } else {
       this.nextDisable = false;
@@ -59,10 +59,10 @@ export class RequestComponent {
   }
 
   toFinish() {
-    if (this.categoryId == "") return;
+    if (this.categoryIds.length == 0) return;
     this.step += 1;
     this.nextDisable = true;
-    this.FreeActivityService.filterFreeActivitiesByDistrictAndCategory(this.districtId, this.categoryId)
+    this.FreeActivityService.filterFreeActivitiesByDistrictAndCategory(this.districtIds, this.categoryIds)
       .subscribe(data => {
         this.freeActivities = data
         console.log(this.freeActivities);
@@ -74,23 +74,54 @@ export class RequestComponent {
       this.router.navigate(['/menu']);
     } else {
       this.step -= 1;
-      if (this.districtId != "" && this.step == 1) {
+      if (this.districtIds.length != 0 && this.step == 1) {
         this.nextDisable = false;
       }
-      if (this.categoryId != "" && this.step == 2) {
+      if (this.categoryIds.length != 0 && this.step == 2) {
         this.nextDisable = false;
       }
     }
   }
 
   choosDistrict(districtId: string) {
-    this.districtId = districtId
-    this.nextDisable = false;
+    debugger
+    if (districtId == '1') {
+      this.districtIds = ['1']
+      this.nextDisable = false;
+      return
+    } else {
+      this.districtIds = this.districtIds.filter(id => id != '1')
+    }
+    let dis = this.districtIds.find(id => id == districtId)
+    if (dis != undefined) {
+      this.districtIds = this.districtIds.filter(d => d != districtId)
+      if (this.districtIds.length == 0)
+        this.nextDisable = true;
+    }
+    else {
+      this.districtIds.push(districtId)
+      this.nextDisable = false;
+    }
   }
 
   choosCategory(categoryId: string) {
-    this.categoryId = categoryId
-    this.nextDisable = false;
+    if (categoryId == '1') {
+      this.categoryIds = ['1']
+      this.nextDisable = false;
+      return
+    } else {
+      this.categoryIds = this.categoryIds.filter(id => id != '1')
+    }
+    let cat = this.categoryIds.find(id => id == categoryId)
+    if (cat != undefined) {
+      this.categoryIds = this.categoryIds.filter(c => c != categoryId)
+      if (this.categoryIds.length == 0)
+        this.nextDisable = true;
+    }
+    else {
+      this.categoryIds.push(categoryId)
+      this.nextDisable = false;
+    }
   }
 
   openDialog(freeActivity: IFreeActivity) {
@@ -99,5 +130,21 @@ export class RequestComponent {
         freeActivity
       },
     });
+  }
+
+  isDistrictExists(districtId: string): boolean {
+    let len = this.districtIds.filter(id => id == districtId).length
+    if (len > 0) {
+      return true
+    }
+    return false;
+  }
+
+  isCategoryExists(categoryId: string): boolean {
+    let len = this.categoryIds.filter(id => id == categoryId).length
+    if (len > 0) {
+      return true
+    }
+    return false;
   }
 }
