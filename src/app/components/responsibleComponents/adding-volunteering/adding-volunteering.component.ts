@@ -89,7 +89,7 @@ export class AddingVolunteeringComponent {
           data: {
             content: "בקשתך לפתיחת התנדבות בארגון שלך התקבלה בהצלחה!" +
               "<br />" +
-              "אנו מאחלים לך שתמצא מהר את המתנדב המתאים.",
+              "אנו מאחלים לך שתצליח לאתר במהירות את המתנדב המתאים.",
             class: 'alert-success',
             link: '/menu'
           }
