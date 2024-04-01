@@ -32,7 +32,7 @@ export class AssociationDetailsComponent {
         data: {
           content: `אישרת בהצלחה את פתיחת מערך התנדבות בעמותה ${this.data.association.name}!` +
             "<br />" +
-            "הודעה על כך תישלח למייל של העמותה, בצרוף סיסמה להזהות האחראים.",
+            "הודעה על כך תישלח למייל של העמותה, בצרוף סיסמה להזדהות האחראים מטעם העמותה.",
           class: 'alert-success',
           link: '/menu'
         }
